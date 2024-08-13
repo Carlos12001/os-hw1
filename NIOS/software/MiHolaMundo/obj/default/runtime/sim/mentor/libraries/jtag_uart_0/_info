@@ -1,0 +1,115 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/carlos/Repos/os_hw1/NIOS/software/MiHolaMundo/obj/default/runtime/sim/mentor
+vcpu_jtag_uart_0
+Z1 !s110 1723162949
+!i10b 1
+!s100 S8:c?mZ6[dgo=QiTgNggG0
+IFdVifOD6e;WIGi26Rn@gY0
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1723160710
+Z4 8C:/Users/carlos/Repos/os_hw1/NIOS/cpu/testbench/cpu_tb/simulation/submodules/cpu_jtag_uart_0.v
+Z5 FC:/Users/carlos/Repos/os_hw1/NIOS/cpu/testbench/cpu_tb/simulation/submodules/cpu_jtag_uart_0.v
+L0 331
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1723162949.000000
+Z8 !s107 C:/Users/carlos/Repos/os_hw1/NIOS/cpu/testbench/cpu_tb/simulation/submodules/cpu_jtag_uart_0.v|
+Z9 !s90 -reportprogress|300|C:/Users/carlos/Repos/os_hw1/NIOS/cpu/testbench/cpu_tb/simulation/submodules/cpu_jtag_uart_0.v|-work|jtag_uart_0|
+!i113 1
+Z10 o-work jtag_uart_0
+Z11 tCvgOpt 0
+vcpu_jtag_uart_0_scfifo_r
+R1
+!i10b 1
+!s100 FiGBo8fHL5dW`1?RJ[@Xj1
+I3kG4<F9c@9RONnYK[2bIO3
+R2
+R0
+R3
+R4
+R5
+L0 243
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcpu_jtag_uart_0_scfifo_w
+R1
+!i10b 1
+!s100 G;i]8j`iWLagSAFQWFa_=3
+I>YH24jT@MU<mX9:feaEP@1
+R2
+R0
+R3
+R4
+R5
+L0 78
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcpu_jtag_uart_0_sim_scfifo_r
+R1
+!i10b 1
+!s100 4?N2G@9a<hXafoIL6aEDC2
+I@?6PE4e^cmjWobfM_GSWV3
+R2
+R0
+R3
+R4
+R5
+L0 164
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcpu_jtag_uart_0_sim_scfifo_w
+R1
+!i10b 1
+!s100 440CF`FC7?l39WDPn=gXJ2
+IQESckAzKE[aBTc=n>YMWa1
+R2
+R0
+R3
+R4
+R5
+L0 21
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
