@@ -12,7 +12,7 @@
 # or its authorized distributors. Please refer to the applicable 
 # agreement for further details.
 
-# ACDS 18.0 614 win32 2024.08.13.11:17:56
+# ACDS 18.1 625 win32 2024.08.17.02:22:00
 
 # ----------------------------------------
 # vcs - auto-generated simulation script
@@ -94,12 +94,12 @@
 # within the Quartus project, and generate a unified
 # script which supports all the Altera IP within the design.
 # ----------------------------------------
-# ACDS 18.0 614 win32 2024.08.13.11:17:56
+# ACDS 18.1 625 win32 2024.08.17.02:22:00
 # ----------------------------------------
 # initialize variables
 TOP_LEVEL_NAME="cpu"
 QSYS_SIMDIR="./../../"
-QUARTUS_INSTALL_DIR="C:/intelfpga_lite/18.0/quartus/"
+QUARTUS_INSTALL_DIR="C:/intelfpga_lite/18.1/quartus/"
 SKIP_FILE_COPY=0
 SKIP_SIM=0
 USER_DEFINED_ELAB_OPTIONS=""
@@ -186,8 +186,12 @@ vcs -lca -timescale=1ps/1ps -sverilog +verilog2001ext+.v -ntb_opts dtm $ELAB_OPT
   $QSYS_SIMDIR/submodules/cpu_irq_mapper.sv \
   $QSYS_SIMDIR/submodules/cpu_mm_interconnect_0.v \
   $QSYS_SIMDIR/submodules/cpu_timer.v \
+  $QSYS_SIMDIR/submodules/cpu_pio_switches.v \
+  $QSYS_SIMDIR/submodules/cpu_pio_key_3.v \
+  $QSYS_SIMDIR/submodules/cpu_pio_key_0.v \
   $QSYS_SIMDIR/submodules/cpu_memoria.v \
-  $QSYS_SIMDIR/submodules/cpu_leds.v \
+  $QSYS_SIMDIR/submodules/cpu_leds_seconds_ls.v \
+  $QSYS_SIMDIR/submodules/cpu_leds_minutes_ls.v \
   $QSYS_SIMDIR/submodules/cpu_jtag_uart_0.v \
   $QSYS_SIMDIR/submodules/cpu_cpu.v \
   $QSYS_SIMDIR/cpu.v \

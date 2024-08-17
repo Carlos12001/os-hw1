@@ -1,20 +1,37 @@
 # # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
 # 
-preplace inst cpu.clk_0 -pg 1 -lvl 1 -y 250
+preplace inst cpu.leds_seconds_ms -pg 1 -lvl 3 -y 880
+preplace inst cpu.leds_seconds_ls -pg 1 -lvl 3 -y 1080
+preplace inst cpu.clk_0 -pg 1 -lvl 1 -y 520
 preplace inst cpu.cpu.reset_bridge -pg 1
-preplace inst cpu.cpu -pg 1 -lvl 2 -y 100
+preplace inst cpu.cpu -pg 1 -lvl 2 -y 310
 preplace inst cpu -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst cpu.pio_key_0 -pg 1 -lvl 3 -y 30
+preplace inst cpu.pio_key_1 -pg 1 -lvl 3 -y 130
+preplace inst cpu.pio_key_2 -pg 1 -lvl 3 -y 1180
+preplace inst cpu.pio_switches -pg 1 -lvl 3 -y 980
+preplace inst cpu.pio_key_3 -pg 1 -lvl 3 -y 1280
 preplace inst cpu.cpu.cpu -pg 1
-preplace inst cpu.leds -pg 1 -lvl 3 -y 210
-preplace inst cpu.memoria -pg 1 -lvl 3 -y 30
-preplace inst cpu.jtag_uart_0 -pg 1 -lvl 3 -y 110
+preplace inst cpu.memoria -pg 1 -lvl 3 -y 290
+preplace inst cpu.leds_minutes_ms -pg 1 -lvl 3 -y 780
+preplace inst cpu.jtag_uart_0 -pg 1 -lvl 3 -y 370
 preplace inst cpu.cpu.clock_bridge -pg 1
-preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)leds.external_connection,(SLAVE)cpu.leds) 1 0 3 NJ 240 NJ 240 NJ
-preplace netloc FAN_OUT<net_container>cpu</net_container>(SLAVE)leds.clk,(SLAVE)cpu.clk,(SLAVE)memoria.clk1,(MASTER)clk_0.clk,(SLAVE)jtag_uart_0.clk) 1 1 2 260 40 700
-preplace netloc POINT_TO_POINT<net_container>cpu</net_container>(MASTER)cpu.irq,(SLAVE)jtag_uart_0.irq) 1 2 1 660
-preplace netloc INTERCONNECT<net_container>cpu</net_container>(SLAVE)leds.s1,(MASTER)cpu.instruction_master,(MASTER)cpu.data_master,(SLAVE)cpu.debug_mem_slave,(SLAVE)memoria.s1,(SLAVE)jtag_uart_0.avalon_jtag_slave) 1 1 2 280 60 640
-preplace netloc FAN_OUT<net_container>cpu</net_container>(MASTER)clk_0.clk_reset,(SLAVE)jtag_uart_0.reset,(SLAVE)memoria.reset1,(SLAVE)leds.reset,(SLAVE)cpu.reset) 1 1 2 280 260 680
-preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)cpu.clk,(SLAVE)clk_0.clk_in) 1 0 1 NJ
-preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)cpu.reset) 1 0 1 NJ
-levelinfo -pg 1 0 50 890
-levelinfo -hier cpu 60 90 400 730 880
+preplace inst cpu.timer -pg 1 -lvl 3 -y 580
+preplace inst cpu.leds_minutes_ls -pg 1 -lvl 3 -y 680
+preplace netloc FAN_OUT<net_container>cpu</net_container>(SLAVE)pio_key_2.reset,(SLAVE)pio_key_0.reset,(SLAVE)timer.reset,(SLAVE)pio_key_3.reset,(SLAVE)leds_minutes_ls.reset,(MASTER)clk_0.clk_reset,(SLAVE)pio_switches.reset,(SLAVE)leds_seconds_ls.reset,(SLAVE)memoria.reset1,(SLAVE)jtag_uart_0.reset,(SLAVE)pio_key_1.reset,(SLAVE)leds_seconds_ms.reset,(SLAVE)cpu.reset,(SLAVE)leds_minutes_ms.reset) 1 1 2 430 1330 870
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)cpu.pio_switches_external_connection,(SLAVE)pio_switches.external_connection) 1 0 3 NJ 1010 NJ 1010 NJ
+preplace netloc FAN_OUT<net_container>cpu</net_container>(SLAVE)pio_key_3.irq,(MASTER)cpu.irq,(SLAVE)timer.irq,(SLAVE)jtag_uart_0.irq) 1 2 1 810
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)pio_key_3.external_connection,(SLAVE)cpu.pio_key_3_external_connection) 1 0 3 NJ 1310 NJ 1310 NJ
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)pio_key_2.external_connection,(SLAVE)cpu.pio_key_2_external_connection) 1 0 3 NJ 1210 NJ 1210 NJ
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)cpu.pio_key_1_external_connection,(SLAVE)pio_key_1.external_connection) 1 0 3 NJ 160 NJ 160 NJ
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)cpu.leds_seconds_ls_external_connection,(SLAVE)leds_seconds_ls.external_connection) 1 0 3 NJ 1110 NJ 1110 NJ
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)leds_minutes_ls.external_connection,(SLAVE)cpu.leds_minutes_ls_external_connection) 1 0 3 NJ 710 NJ 710 NJ
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)cpu.leds_seconds_ms_external_connection,(SLAVE)leds_seconds_ms.external_connection) 1 0 3 NJ 910 NJ 910 NJ
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)cpu.reset,(SLAVE)clk_0.clk_in_reset) 1 0 1 NJ
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)pio_key_0.external_connection,(SLAVE)cpu.pio_key_0_external_connection) 1 0 3 NJ 60 NJ 60 NJ
+preplace netloc INTERCONNECT<net_container>cpu</net_container>(MASTER)cpu.data_master,(SLAVE)timer.s1,(SLAVE)pio_key_0.s1,(SLAVE)pio_key_2.s1,(SLAVE)leds_minutes_ls.s1,(SLAVE)memoria.s1,(SLAVE)jtag_uart_0.avalon_jtag_slave,(SLAVE)leds_minutes_ms.s1,(SLAVE)pio_key_1.s1,(SLAVE)pio_key_3.s1,(SLAVE)leds_seconds_ms.s1,(SLAVE)cpu.debug_mem_slave,(MASTER)cpu.instruction_master,(SLAVE)pio_switches.s1,(SLAVE)leds_seconds_ls.s1) 1 1 2 450 1350 830
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)cpu.leds_minutes_ms_external_connection,(SLAVE)leds_minutes_ms.external_connection) 1 0 3 NJ 810 NJ 810 NJ
+preplace netloc FAN_OUT<net_container>cpu</net_container>(SLAVE)pio_key_2.clk,(SLAVE)leds_seconds_ms.clk,(SLAVE)pio_switches.clk,(SLAVE)memoria.clk1,(SLAVE)leds_minutes_ms.clk,(SLAVE)pio_key_3.clk,(SLAVE)cpu.clk,(SLAVE)leds_minutes_ls.clk,(SLAVE)leds_seconds_ls.clk,(MASTER)clk_0.clk,(SLAVE)timer.clk,(SLAVE)pio_key_0.clk,(SLAVE)pio_key_1.clk,(SLAVE)jtag_uart_0.clk) 1 1 2 410 1230 850
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)clk_0.clk_in,(SLAVE)cpu.clk) 1 0 1 NJ
+levelinfo -pg 1 0 200 1080
+levelinfo -hier cpu 210 240 570 920 1070

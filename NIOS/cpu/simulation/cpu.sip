@@ -1,5 +1,5 @@
 set_global_assignment -entity "cpu" -library "lib_cpu" -name IP_TOOL_NAME "Qsys"
-set_global_assignment -entity "cpu" -library "lib_cpu" -name IP_TOOL_VERSION "18.0"
+set_global_assignment -entity "cpu" -library "lib_cpu" -name IP_TOOL_VERSION "18.1"
 set_global_assignment -entity "cpu" -library "lib_cpu" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -library "lib_cpu" -name SPD_FILE [file join $::quartus(sip_path) "../cpu.spd"]
 set_global_assignment -library "lib_cpu" -name MISC_FILE [file join $::quartus(sip_path) "../../cpu.qsys"]
@@ -32,9 +32,13 @@ set_global_assignment -library "lib_cpu" -name MISC_FILE [file join $::quartus(s
 set_global_assignment -library "lib_cpu" -name MISC_FILE [file join $::quartus(sip_path) "submodules/altera_merlin_slave_translator.sv"]
 set_global_assignment -library "lib_cpu" -name MISC_FILE [file join $::quartus(sip_path) "submodules/altera_merlin_master_translator.sv"]
 set_global_assignment -library "lib_cpu" -name MISC_FILE [file join $::quartus(sip_path) "submodules/cpu_timer.v"]
+set_global_assignment -library "lib_cpu" -name MISC_FILE [file join $::quartus(sip_path) "submodules/cpu_pio_switches.v"]
+set_global_assignment -library "lib_cpu" -name MISC_FILE [file join $::quartus(sip_path) "submodules/cpu_pio_key_3.v"]
+set_global_assignment -library "lib_cpu" -name MISC_FILE [file join $::quartus(sip_path) "submodules/cpu_pio_key_0.v"]
 set_global_assignment -library "lib_cpu" -name MISC_FILE [file join $::quartus(sip_path) "submodules/cpu_memoria.hex"]
 set_global_assignment -library "lib_cpu" -name MISC_FILE [file join $::quartus(sip_path) "submodules/cpu_memoria.v"]
-set_global_assignment -library "lib_cpu" -name MISC_FILE [file join $::quartus(sip_path) "submodules/cpu_leds.v"]
+set_global_assignment -library "lib_cpu" -name MISC_FILE [file join $::quartus(sip_path) "submodules/cpu_leds_seconds_ls.v"]
+set_global_assignment -library "lib_cpu" -name MISC_FILE [file join $::quartus(sip_path) "submodules/cpu_leds_minutes_ls.v"]
 set_global_assignment -library "lib_cpu" -name MISC_FILE [file join $::quartus(sip_path) "submodules/cpu_jtag_uart_0.v"]
 set_global_assignment -library "lib_cpu" -name MISC_FILE [file join $::quartus(sip_path) "submodules/cpu_cpu.v"]
 set_global_assignment -library "lib_cpu" -name MISC_FILE [file join $::quartus(sip_path) "submodules/cpu_cpu_cpu.sdc"]

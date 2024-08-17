@@ -182,6 +182,18 @@
    type="VERILOG"
    library="timer" />
  <file
+   path="simulation/submodules/cpu_pio_switches.v"
+   type="VERILOG"
+   library="pio_switches" />
+ <file
+   path="simulation/submodules/cpu_pio_key_3.v"
+   type="VERILOG"
+   library="pio_key_3" />
+ <file
+   path="simulation/submodules/cpu_pio_key_0.v"
+   type="VERILOG"
+   library="pio_key_0" />
+ <file
    path="simulation/submodules/cpu_memoria.hex"
    type="HEX"
    library="memoria" />
@@ -189,7 +201,14 @@
    path="simulation/submodules/cpu_memoria.v"
    type="VERILOG"
    library="memoria" />
- <file path="simulation/submodules/cpu_leds.v" type="VERILOG" library="leds" />
+ <file
+   path="simulation/submodules/cpu_leds_seconds_ls.v"
+   type="VERILOG"
+   library="leds_seconds_ls" />
+ <file
+   path="simulation/submodules/cpu_leds_minutes_ls.v"
+   type="VERILOG"
+   library="leds_minutes_ls" />
  <file
    path="simulation/submodules/cpu_jtag_uart_0.v"
    type="VERILOG"

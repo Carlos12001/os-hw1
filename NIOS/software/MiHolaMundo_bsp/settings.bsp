@@ -2,10 +2,10 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Aug 13, 2024 2:09:35 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1723579775084</BspGeneratedUnixTimeStamp>
-        <BspGeneratedLocation>C:\Users\carlos\Repos\os_hw1\NIOS\software\MiHolaMundo_bsp</BspGeneratedLocation>
-        <BspSettingsFile>settings.bsp</BspSettingsFile>
+        <BspGeneratedTimeStamp>Aug 16, 2024 6:53:44 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1723856024126</BspGeneratedUnixTimeStamp>
+        <BspGeneratedLocation>C:\Users\Ignac\Documentos\Git\os_hw1\NIOS\software\MiHolaMundo_bsp</BspGeneratedLocation>
+        <BspSettingsFile>C:\Users\Ignac\Documentos\Git\os-hw1\NIOS\software\MiHolaMundo_bsp\settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\cpu.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
         <Cpu>cpu</Cpu>
@@ -806,7 +806,7 @@
                 <SettingName>hal.enable_lightweight_device_driver_api</SettingName>
                 <Identifier>ALT_USE_DIRECT_DRIVERS</Identifier>
                 <Type>Boolean</Type>
-                <Value>1</Value>
+                <Value>0</Value>
                 <DefaultValue>0</DefaultValue>
                 <DestinationFile>public_mk_define</DestinationFile>
                 <Description>Enables lightweight device driver API. This reduces code and data footprint by removing the HAL layer that maps device names (e.g. /dev/uart0) to file descriptors. Instead, driver routines are called directly. The open(), close(), and lseek() routines will always fail if called. The read(), write(), fstat(), ioctl(), and isatty() routines only work for the stdio devices. If true, adds -DALT_USE_DIRECT_DRIVERS to ALT_CPPFLAGS in public.mk.</Description>
@@ -905,7 +905,7 @@
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>leds</slaveDescriptor>
+                <slaveDescriptor>leds_seconds_ls</slaveDescriptor>
                 <addressRange>0x00003000 - 0x0000300F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
@@ -921,6 +921,30 @@
                 <addressRange>0x00003048 - 0x0000304F</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>leds_seconds_ms</slaveDescriptor>
+                <addressRange>0x00010000 - 0x0001000F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>leds_minutes_ls</slaveDescriptor>
+                <addressRange>0x00020000 - 0x0002000F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>leds_minutes_ms</slaveDescriptor>
+                <addressRange>0x00030000 - 0x0003000F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>pio_switches</slaveDescriptor>
+                <addressRange>0x00040000 - 0x0004000F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
         </MemoryMap>
         <LinkerSection>
                 <sectionName>.text</sectionName>

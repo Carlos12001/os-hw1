@@ -26,8 +26,12 @@ rst_controller:                               ./libraries/rst_controller/
 irq_mapper:                                   ./libraries/irq_mapper/                                  
 mm_interconnect_0:                            ./libraries/mm_interconnect_0/                           
 timer:                                        ./libraries/timer/                                       
+pio_switches:                                 ./libraries/pio_switches/                                
+pio_key_3:                                    ./libraries/pio_key_3/                                   
+pio_key_0:                                    ./libraries/pio_key_0/                                   
 memoria:                                      ./libraries/memoria/                                     
-leds:                                         ./libraries/leds/                                        
+leds_seconds_ls:                              ./libraries/leds_seconds_ls/                             
+leds_minutes_ls:                              ./libraries/leds_minutes_ls/                             
 jtag_uart_0:                                  ./libraries/jtag_uart_0/                                 
 altera_ver:                                   ./libraries/altera_ver/                                  
 lpm_ver:                                      ./libraries/lpm_ver/                                     

@@ -8,22 +8,61 @@
 // Variables globales
 volatile int timer_flag = 0; // Indicador de interrupción del temporizador
 int current_hours = 0, current_minutes = 0;
-int alarm_hours = 6, alarm_minutes = 30; // Hora de alarma predeterminada
+int alarm_hours = 0, alarm_minutes = 5; // Hora de alarma predeterminada
 volatile unsigned short *led1 = (short *) 0x3000;
+
+
+
+
+int decoder (int num) {
+
+	int binarySegments = 0b1111111;
+
+	if(num == 0){
+		binarySegments = 0b1000000;
+	}else if(num == 1){
+		binarySegments = 0b1111001;
+	}else if(num == 2){
+		binarySegments = 0b0100100;
+	}else if(num == 3){
+		binarySegments = 0b0110000;
+	}else if(num == 4){
+		binarySegments = 0b0011001;
+	}else if(num == 5){
+		binarySegments = 0b0010010;
+	}else if(num == 6){
+		binarySegments = 0b0000010;
+	}else if(num == 7){
+		binarySegments = 0b1111000;
+	}else if(num == 8){
+		binarySegments = 0b0000000;
+	}else if(num == 9){
+		binarySegments = 0b0010000;
+	}else{
+		binarySegments = 0b0000001;
+	}
+
+	return binarySegments;
+};
+
+
+
 
 // ISR del temporizador
 void timer_isr(void* context, alt_u32 id) {
     IOWR_ALTERA_AVALON_TIMER_STATUS(0x3020, 0); // Limpia la interrupción
     timer_flag = 1; // Marca que ha pasado un segundo
 
-
-
+    /*IOWR_ALTERA_AVALON_PIO_DATA(0x3000, decoder(2));
+	IOWR_ALTERA_AVALON_PIO_DATA(0x10000, decoder(3));
+	IOWR_ALTERA_AVALON_PIO_DATA(0x20000, decoder(4));
+	IOWR_ALTERA_AVALON_PIO_DATA(0x30000, decoder(5));*/
 
     // Aquí podrías llamar a set_time() según la entrada del usuario para cambiar la hora
     update_time(&current_hours, &current_minutes); // Actualiza la hora actual
 
-
-
+    // Comprueba si es hora de activar la alarma
+    check_alarm(current_hours, current_minutes, alarm_hours, alarm_minutes);
 
 }
 
@@ -48,13 +87,23 @@ void update_time(int* hours, int* minutes) {
         }
         // Para pruebas, imprime la hora actual
     char str[12];
-    alt_printf("Hour and minutes");
+    alt_printf("Hour: ");
     itoa(current_hours, str, 10);
 	alt_printf(str);
+	alt_printf(" and minutes: ");
     itoa(current_minutes, str, 10);
     alt_printf(str);
 	alt_printf("\n");
-        timer_flag = 0; // Reinicia la bandera
+
+	timer_flag = 0; // Reinicia la bandera
+    }
+}
+
+// Comprobación de la alarma
+void check_alarm(int current_hours, int current_minutes, int alarm_hours, int alarm_minutes) {
+    if (current_hours == alarm_hours && current_minutes == alarm_minutes) {
+        *led1 = 2; // Enciende un LED o realiza alguna acción visual
+        alt_putstr("ALARM! Time to wake up!\n");
     }
 }
 
@@ -63,14 +112,14 @@ void update_time(int* hours, int* minutes) {
 int main() {
     init_timer(); // Inicializa el temporizador
 
+    // Aquí podrías llamar a set_time() según la entrada del usuario para cambiar la hora
+    update_time(&current_hours, &current_minutes); // Actualiza la hora actual
 
 
+	// Simulación de trabajo en el bucle principal
+	// Aquí podrías añadir más lógica o funcionalidades adicionales
 
-
-        // Simulación de trabajo en el bucle principal
-        // Aquí podrías añadir más lógica o funcionalidades adicionales
-
-        // Pequeña pausa para no saturar el terminal
-        while(1);
+	// Pequeña pausa para no saturar el terminal
+	while(1);
     return 0;
 }
