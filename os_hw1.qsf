@@ -41,7 +41,7 @@ set_global_assignment -name DEVICE 5CSEMA5F31C6
 set_global_assignment -name TOP_LEVEL_ENTITY cpu_inst
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.0.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "17:19:01  AUGUST 08, 2024"
-set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Lite Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "18.0.0 Lite Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name BOARD "DE1-SoC Board"
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim (SystemVerilog)"
@@ -58,34 +58,6 @@ set_global_assignment -name TIMING_ANALYZER_MULTICORNER_ANALYSIS ON
 set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
 set_location_assignment PIN_AF14 -to clk
 set_location_assignment PIN_AA30 -to reset
-set_location_assignment PIN_AE26 -to milisecondsDisplay1[0]
-set_location_assignment PIN_AE27 -to milisecondsDisplay1[1]
-set_location_assignment PIN_AE28 -to milisecondsDisplay1[2]
-set_location_assignment PIN_AG27 -to milisecondsDisplay1[3]
-set_location_assignment PIN_AF28 -to milisecondsDisplay1[4]
-set_location_assignment PIN_AG28 -to milisecondsDisplay1[5]
-set_location_assignment PIN_AH28 -to milisecondsDisplay1[6]
-set_location_assignment PIN_AJ29 -to milisecondsDisplay2[0]
-set_location_assignment PIN_AH29 -to milisecondsDisplay2[1]
-set_location_assignment PIN_AH30 -to milisecondsDisplay2[2]
-set_location_assignment PIN_AG30 -to milisecondsDisplay2[3]
-set_location_assignment PIN_AF29 -to milisecondsDisplay2[4]
-set_location_assignment PIN_AF30 -to milisecondsDisplay2[5]
-set_location_assignment PIN_AD27 -to milisecondsDisplay2[6]
-set_location_assignment PIN_AB23 -to secondsDisplay1[0]
-set_location_assignment PIN_AE29 -to secondsDisplay1[1]
-set_location_assignment PIN_AD29 -to secondsDisplay1[2]
-set_location_assignment PIN_AC28 -to secondsDisplay1[3]
-set_location_assignment PIN_AD30 -to secondsDisplay1[4]
-set_location_assignment PIN_AC29 -to secondsDisplay1[5]
-set_location_assignment PIN_AC30 -to secondsDisplay1[6]
-set_location_assignment PIN_AD26 -to secondsDisplay2[0]
-set_location_assignment PIN_AC27 -to secondsDisplay2[1]
-set_location_assignment PIN_AD25 -to secondsDisplay2[2]
-set_location_assignment PIN_AC25 -to secondsDisplay2[3]
-set_location_assignment PIN_AB28 -to secondsDisplay2[4]
-set_location_assignment PIN_AB25 -to secondsDisplay2[5]
-set_location_assignment PIN_AB22 -to secondsDisplay2[6]
 set_global_assignment -name VERILOG_INPUT_VERSION SYSTEMVERILOG_2005
 set_global_assignment -name VERILOG_SHOW_LMF_MAPPING_MESSAGES OFF
 set_global_assignment -name VHDL_INPUT_VERSION VHDL_2008
@@ -95,8 +67,36 @@ set_location_assignment PIN_AB12 -to switcher[0]
 set_global_assignment -name QSYS_FILE NIOS/cpu.qsys
 set_global_assignment -name VERILOG_FILE NIOS/cpu/cpu_inst.v
 set_global_assignment -name QIP_FILE NIOS/cpu/synthesis/cpu.qip
-set_location_assignment PIN_AA14 -to key0
-set_location_assignment PIN_AA15 -to key1
-set_location_assignment PIN_W15 -to key2
-set_location_assignment PIN_Y16 -to key3
+set_location_assignment PIN_AH28 -to minutesDisplay0[6]
+set_location_assignment PIN_AE26 -to minutesDisplay0[0]
+set_location_assignment PIN_AE27 -to minutesDisplay0[1]
+set_location_assignment PIN_AE28 -to minutesDisplay0[2]
+set_location_assignment PIN_AF28 -to minutesDisplay0[4]
+set_location_assignment PIN_AG27 -to minutesDisplay0[3]
+set_location_assignment PIN_AG28 -to minutesDisplay0[5]
+set_location_assignment PIN_AJ29 -to minutesDisplay1[0]
+set_location_assignment PIN_AH29 -to minutesDisplay1[1]
+set_location_assignment PIN_AH30 -to minutesDisplay1[2]
+set_location_assignment PIN_AG30 -to minutesDisplay1[3]
+set_location_assignment PIN_AF29 -to minutesDisplay1[4]
+set_location_assignment PIN_AD27 -to minutesDisplay1[6]
+set_location_assignment PIN_AF30 -to minutesDisplay1[5]
+set_location_assignment PIN_AB23 -to hoursDisplay0[0]
+set_location_assignment PIN_AE29 -to hoursDisplay0[1]
+set_location_assignment PIN_AD29 -to hoursDisplay0[2]
+set_location_assignment PIN_AC28 -to hoursDisplay0[3]
+set_location_assignment PIN_AD30 -to hoursDisplay0[4]
+set_location_assignment PIN_AC29 -to hoursDisplay0[5]
+set_location_assignment PIN_AC30 -to hoursDisplay0[6]
+set_location_assignment PIN_AD26 -to hoursDisplay1[0]
+set_location_assignment PIN_AC27 -to hoursDisplay1[1]
+set_location_assignment PIN_AD25 -to hoursDisplay1[2]
+set_location_assignment PIN_AC25 -to hoursDisplay1[3]
+set_location_assignment PIN_AB28 -to hoursDisplay1[4]
+set_location_assignment PIN_AB25 -to hoursDisplay1[5]
+set_location_assignment PIN_AB22 -to hoursDisplay1[6]
+set_location_assignment PIN_AA14 -to keys[0]
+set_location_assignment PIN_AA15 -to keys[1]
+set_location_assignment PIN_AC18 -to buzzer
+set_global_assignment -name SMART_RECOMPILE ON
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

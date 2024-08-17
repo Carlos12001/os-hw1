@@ -12,7 +12,7 @@
 # or its authorized distributors. Please refer to the applicable 
 # agreement for further details.
 
-# ACDS 18.1 625 win32 2024.08.17.02:22:00
+# ACDS 18.0 614 win32 2024.08.17.14:05:51
 
 # ----------------------------------------
 # ncsim - auto-generated simulation script
@@ -106,12 +106,12 @@
 # within the Quartus project, and generate a unified
 # script which supports all the Altera IP within the design.
 # ----------------------------------------
-# ACDS 18.1 625 win32 2024.08.17.02:22:00
+# ACDS 18.0 614 win32 2024.08.17.14:05:51
 # ----------------------------------------
 # initialize variables
 TOP_LEVEL_NAME="cpu"
 QSYS_SIMDIR="./../"
-QUARTUS_INSTALL_DIR="C:/intelfpga_lite/18.1/quartus/"
+QUARTUS_INSTALL_DIR="C:/intelfpga_lite/18.0/quartus/"
 SKIP_FILE_COPY=0
 SKIP_DEV_COM=0
 SKIP_COM=0
@@ -171,11 +171,10 @@ mkdir -p ./libraries/irq_mapper/
 mkdir -p ./libraries/mm_interconnect_0/
 mkdir -p ./libraries/timer/
 mkdir -p ./libraries/pio_switches/
-mkdir -p ./libraries/pio_key_3/
 mkdir -p ./libraries/pio_key_0/
+mkdir -p ./libraries/pio_buzzer/
 mkdir -p ./libraries/memoria/
-mkdir -p ./libraries/leds_seconds_ls/
-mkdir -p ./libraries/leds_minutes_ls/
+mkdir -p ./libraries/leds_hours_ls/
 mkdir -p ./libraries/jtag_uart_0/
 mkdir -p ./libraries/altera_ver/
 mkdir -p ./libraries/lpm_ver/
@@ -256,11 +255,10 @@ if [ $SKIP_COM -eq 0 ]; then
   ncvlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/cpu_mm_interconnect_0.v"                                    -work mm_interconnect_0                            -cdslib ./cds_libs/mm_interconnect_0.cds.lib                           
   ncvlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/cpu_timer.v"                                                -work timer                                        -cdslib ./cds_libs/timer.cds.lib                                       
   ncvlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/cpu_pio_switches.v"                                         -work pio_switches                                 -cdslib ./cds_libs/pio_switches.cds.lib                                
-  ncvlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/cpu_pio_key_3.v"                                            -work pio_key_3                                    -cdslib ./cds_libs/pio_key_3.cds.lib                                   
   ncvlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/cpu_pio_key_0.v"                                            -work pio_key_0                                    -cdslib ./cds_libs/pio_key_0.cds.lib                                   
+  ncvlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/cpu_pio_buzzer.v"                                           -work pio_buzzer                                   -cdslib ./cds_libs/pio_buzzer.cds.lib                                  
   ncvlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/cpu_memoria.v"                                              -work memoria                                      -cdslib ./cds_libs/memoria.cds.lib                                     
-  ncvlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/cpu_leds_seconds_ls.v"                                      -work leds_seconds_ls                              -cdslib ./cds_libs/leds_seconds_ls.cds.lib                             
-  ncvlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/cpu_leds_minutes_ls.v"                                      -work leds_minutes_ls                              -cdslib ./cds_libs/leds_minutes_ls.cds.lib                             
+  ncvlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/cpu_leds_hours_ls.v"                                        -work leds_hours_ls                                -cdslib ./cds_libs/leds_hours_ls.cds.lib                               
   ncvlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/cpu_jtag_uart_0.v"                                          -work jtag_uart_0                                  -cdslib ./cds_libs/jtag_uart_0.cds.lib                                 
   ncvlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/submodules/cpu_cpu.v"                                                  -work cpu                                          -cdslib ./cds_libs/cpu.cds.lib                                         
   ncvlog $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS     "$QSYS_SIMDIR/cpu.v"                                                                                                                                                                                           

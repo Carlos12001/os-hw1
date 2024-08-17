@@ -11,9 +11,9 @@
 // agreement for further details.
 
 
-// $Id: //acds/rel/18.1std/ip/merlin/altera_merlin_demultiplexer/altera_merlin_demultiplexer.sv.terp#1 $
+// $Id: //acds/rel/18.0std/ip/merlin/altera_merlin_demultiplexer/altera_merlin_demultiplexer.sv.terp#1 $
 // $Revision: #1 $
-// $Date: 2018/07/18 $
+// $Date: 2018/01/31 $
 // $Author: psgswbuild $
 
 // -------------------------------------
@@ -28,8 +28,8 @@
 // ------------------------------------------
 // Generation parameters:
 //   output_name:         cpu_mm_interconnect_0_rsp_demux_004
-//   ST_DATA_W:           98
-//   ST_CHANNEL_W:        13
+//   ST_DATA_W:           92
+//   ST_CHANNEL_W:        12
 //   NUM_OUTPUTS:         1
 //   VALID_WIDTH:         1
 // ------------------------------------------
@@ -46,8 +46,8 @@ module cpu_mm_interconnect_0_rsp_demux_004
     // Sink
     // -------------------
     input  [1-1      : 0]   sink_valid,
-    input  [98-1    : 0]   sink_data, // ST_DATA_W=98
-    input  [13-1 : 0]   sink_channel, // ST_CHANNEL_W=13
+    input  [92-1    : 0]   sink_data, // ST_DATA_W=92
+    input  [12-1 : 0]   sink_channel, // ST_CHANNEL_W=12
     input                         sink_startofpacket,
     input                         sink_endofpacket,
     output                        sink_ready,
@@ -56,8 +56,8 @@ module cpu_mm_interconnect_0_rsp_demux_004
     // Sources 
     // -------------------
     output reg                      src0_valid,
-    output reg [98-1    : 0] src0_data, // ST_DATA_W=98
-    output reg [13-1 : 0] src0_channel, // ST_CHANNEL_W=13
+    output reg [92-1    : 0] src0_data, // ST_DATA_W=92
+    output reg [12-1 : 0] src0_channel, // ST_CHANNEL_W=12
     output reg                      src0_startofpacket,
     output reg                      src0_endofpacket,
     input                           src0_ready,
@@ -94,7 +94,7 @@ module cpu_mm_interconnect_0_rsp_demux_004
     // -------------------
     assign ready_vector[0] = src0_ready;
 
-    assign sink_ready = |(sink_channel & {{12{1'b0}},{ready_vector[NUM_OUTPUTS - 1 : 0]}});
+    assign sink_ready = |(sink_channel & {{11{1'b0}},{ready_vector[NUM_OUTPUTS - 1 : 0]}});
 
 endmodule
 

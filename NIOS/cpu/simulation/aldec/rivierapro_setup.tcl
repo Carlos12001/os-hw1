@@ -12,7 +12,7 @@
 # or its authorized distributors. Please refer to the applicable 
 # agreement for further details.
 
-# ACDS 18.1 625 win32 2024.08.17.02:22:01
+# ACDS 18.0 614 win32 2024.08.17.14:05:51
 # ----------------------------------------
 # Auto-generated simulation script rivierapro_setup.tcl
 # ----------------------------------------
@@ -113,7 +113,7 @@ if ![info exists QSYS_SIMDIR] {
 }
 
 if ![info exists QUARTUS_INSTALL_DIR] { 
-  set QUARTUS_INSTALL_DIR "C:/intelfpga_lite/18.1/quartus/"
+  set QUARTUS_INSTALL_DIR "C:/intelfpga_lite/18.0/quartus/"
 }
 
 if ![info exists USER_DEFINED_COMPILE_OPTIONS] { 
@@ -236,16 +236,14 @@ ensure_lib                                              ./libraries/timer
 vmap       timer                                        ./libraries/timer                                       
 ensure_lib                                              ./libraries/pio_switches                                
 vmap       pio_switches                                 ./libraries/pio_switches                                
-ensure_lib                                              ./libraries/pio_key_3                                   
-vmap       pio_key_3                                    ./libraries/pio_key_3                                   
 ensure_lib                                              ./libraries/pio_key_0                                   
 vmap       pio_key_0                                    ./libraries/pio_key_0                                   
+ensure_lib                                              ./libraries/pio_buzzer                                  
+vmap       pio_buzzer                                   ./libraries/pio_buzzer                                  
 ensure_lib                                              ./libraries/memoria                                     
 vmap       memoria                                      ./libraries/memoria                                     
-ensure_lib                                              ./libraries/leds_seconds_ls                             
-vmap       leds_seconds_ls                              ./libraries/leds_seconds_ls                             
-ensure_lib                                              ./libraries/leds_minutes_ls                             
-vmap       leds_minutes_ls                              ./libraries/leds_minutes_ls                             
+ensure_lib                                              ./libraries/leds_hours_ls                               
+vmap       leds_hours_ls                                ./libraries/leds_hours_ls                               
 ensure_lib                                              ./libraries/jtag_uart_0                                 
 vmap       jtag_uart_0                                  ./libraries/jtag_uart_0                                 
 
@@ -306,11 +304,10 @@ alias com {
   eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/cpu_mm_interconnect_0.v"                                    -work mm_interconnect_0                           
   eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/cpu_timer.v"                                                -work timer                                       
   eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/cpu_pio_switches.v"                                         -work pio_switches                                
-  eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/cpu_pio_key_3.v"                                            -work pio_key_3                                   
   eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/cpu_pio_key_0.v"                                            -work pio_key_0                                   
+  eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/cpu_pio_buzzer.v"                                           -work pio_buzzer                                  
   eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/cpu_memoria.v"                                              -work memoria                                     
-  eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/cpu_leds_seconds_ls.v"                                      -work leds_seconds_ls                             
-  eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/cpu_leds_minutes_ls.v"                                      -work leds_minutes_ls                             
+  eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/cpu_leds_hours_ls.v"                                        -work leds_hours_ls                               
   eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/cpu_jtag_uart_0.v"                                          -work jtag_uart_0                                 
   eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/submodules/cpu_cpu.v"                                                  -work cpu                                         
   eval  vlog -v2k5 $USER_DEFINED_VERILOG_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS "$QSYS_SIMDIR/cpu.v"                                                                                                                   
@@ -320,14 +317,14 @@ alias com {
 # Elaborate top level design
 alias elab {
   echo "\[exec\] elab"
-  eval vsim +access +r -t ps $ELAB_OPTIONS -L work -L error_adapter_0 -L avalon_st_adapter -L rsp_mux_001 -L rsp_mux -L rsp_demux_004 -L rsp_demux -L cmd_mux_004 -L cmd_mux -L cmd_demux_001 -L cmd_demux -L router_006 -L router_002 -L router_001 -L router -L jtag_uart_0_avalon_jtag_slave_agent_rsp_fifo -L jtag_uart_0_avalon_jtag_slave_agent -L cpu_data_master_agent -L jtag_uart_0_avalon_jtag_slave_translator -L cpu_data_master_translator -L cpu -L rst_controller -L irq_mapper -L mm_interconnect_0 -L timer -L pio_switches -L pio_key_3 -L pio_key_0 -L memoria -L leds_seconds_ls -L leds_minutes_ls -L jtag_uart_0 -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver $TOP_LEVEL_NAME
+  eval vsim +access +r -t ps $ELAB_OPTIONS -L work -L error_adapter_0 -L avalon_st_adapter -L rsp_mux_001 -L rsp_mux -L rsp_demux_004 -L rsp_demux -L cmd_mux_004 -L cmd_mux -L cmd_demux_001 -L cmd_demux -L router_006 -L router_002 -L router_001 -L router -L jtag_uart_0_avalon_jtag_slave_agent_rsp_fifo -L jtag_uart_0_avalon_jtag_slave_agent -L cpu_data_master_agent -L jtag_uart_0_avalon_jtag_slave_translator -L cpu_data_master_translator -L cpu -L rst_controller -L irq_mapper -L mm_interconnect_0 -L timer -L pio_switches -L pio_key_0 -L pio_buzzer -L memoria -L leds_hours_ls -L jtag_uart_0 -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver $TOP_LEVEL_NAME
 }
 
 # ----------------------------------------
 # Elaborate the top level design with -dbg -O2 option
 alias elab_debug {
   echo "\[exec\] elab_debug"
-  eval vsim -dbg -O2 +access +r -t ps $ELAB_OPTIONS -L work -L error_adapter_0 -L avalon_st_adapter -L rsp_mux_001 -L rsp_mux -L rsp_demux_004 -L rsp_demux -L cmd_mux_004 -L cmd_mux -L cmd_demux_001 -L cmd_demux -L router_006 -L router_002 -L router_001 -L router -L jtag_uart_0_avalon_jtag_slave_agent_rsp_fifo -L jtag_uart_0_avalon_jtag_slave_agent -L cpu_data_master_agent -L jtag_uart_0_avalon_jtag_slave_translator -L cpu_data_master_translator -L cpu -L rst_controller -L irq_mapper -L mm_interconnect_0 -L timer -L pio_switches -L pio_key_3 -L pio_key_0 -L memoria -L leds_seconds_ls -L leds_minutes_ls -L jtag_uart_0 -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver $TOP_LEVEL_NAME
+  eval vsim -dbg -O2 +access +r -t ps $ELAB_OPTIONS -L work -L error_adapter_0 -L avalon_st_adapter -L rsp_mux_001 -L rsp_mux -L rsp_demux_004 -L rsp_demux -L cmd_mux_004 -L cmd_mux -L cmd_demux_001 -L cmd_demux -L router_006 -L router_002 -L router_001 -L router -L jtag_uart_0_avalon_jtag_slave_agent_rsp_fifo -L jtag_uart_0_avalon_jtag_slave_agent -L cpu_data_master_agent -L jtag_uart_0_avalon_jtag_slave_translator -L cpu_data_master_translator -L cpu -L rst_controller -L irq_mapper -L mm_interconnect_0 -L timer -L pio_switches -L pio_key_0 -L pio_buzzer -L memoria -L leds_hours_ls -L jtag_uart_0 -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver $TOP_LEVEL_NAME
 }
 
 # ----------------------------------------

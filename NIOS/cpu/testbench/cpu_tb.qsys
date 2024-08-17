@@ -25,11 +25,75 @@
          type = "int";
       }
    }
-   element cpu_inst_leds_bfm
+   element cpu_inst_leds_minutes_ls_external_connection_bfm
    {
       datum _sortIndex
       {
          value = "3";
+         type = "int";
+      }
+   }
+   element cpu_inst_leds_minutes_ms_external_connection_bfm
+   {
+      datum _sortIndex
+      {
+         value = "4";
+         type = "int";
+      }
+   }
+   element cpu_inst_leds_seconds_ls_external_connection_bfm
+   {
+      datum _sortIndex
+      {
+         value = "5";
+         type = "int";
+      }
+   }
+   element cpu_inst_leds_seconds_ms_external_connection_bfm
+   {
+      datum _sortIndex
+      {
+         value = "6";
+         type = "int";
+      }
+   }
+   element cpu_inst_pio_key_0_external_connection_bfm
+   {
+      datum _sortIndex
+      {
+         value = "7";
+         type = "int";
+      }
+   }
+   element cpu_inst_pio_key_1_external_connection_bfm
+   {
+      datum _sortIndex
+      {
+         value = "8";
+         type = "int";
+      }
+   }
+   element cpu_inst_pio_key_2_external_connection_bfm
+   {
+      datum _sortIndex
+      {
+         value = "9";
+         type = "int";
+      }
+   }
+   element cpu_inst_pio_key_3_external_connection_bfm
+   {
+      datum _sortIndex
+      {
+         value = "10";
+         type = "int";
+      }
+   }
+   element cpu_inst_pio_switches_external_connection_bfm
+   {
+      datum _sortIndex
+      {
+         value = "11";
          type = "int";
       }
    }
@@ -81,13 +145,101 @@
   <parameter name="CLOCK_UNIT" value="1" />
  </module>
  <module
-   name="cpu_inst_leds_bfm"
+   name="cpu_inst_leds_minutes_ls_external_connection_bfm"
    kind="altera_conduit_bfm"
    version="18.0"
    enabled="1">
   <parameter name="CLOCKED_SIGNAL" value="false" />
   <parameter name="ENABLE_RESET" value="false" />
   <parameter name="SIGNAL_DIRECTIONS" value="input" />
+  <parameter name="SIGNAL_ROLES" value="export" />
+  <parameter name="SIGNAL_WIDTHS" value="8" />
+ </module>
+ <module
+   name="cpu_inst_leds_minutes_ms_external_connection_bfm"
+   kind="altera_conduit_bfm"
+   version="18.0"
+   enabled="1">
+  <parameter name="CLOCKED_SIGNAL" value="false" />
+  <parameter name="ENABLE_RESET" value="false" />
+  <parameter name="SIGNAL_DIRECTIONS" value="input" />
+  <parameter name="SIGNAL_ROLES" value="export" />
+  <parameter name="SIGNAL_WIDTHS" value="8" />
+ </module>
+ <module
+   name="cpu_inst_leds_seconds_ls_external_connection_bfm"
+   kind="altera_conduit_bfm"
+   version="18.0"
+   enabled="1">
+  <parameter name="CLOCKED_SIGNAL" value="false" />
+  <parameter name="ENABLE_RESET" value="false" />
+  <parameter name="SIGNAL_DIRECTIONS" value="input" />
+  <parameter name="SIGNAL_ROLES" value="export" />
+  <parameter name="SIGNAL_WIDTHS" value="7" />
+ </module>
+ <module
+   name="cpu_inst_leds_seconds_ms_external_connection_bfm"
+   kind="altera_conduit_bfm"
+   version="18.0"
+   enabled="1">
+  <parameter name="CLOCKED_SIGNAL" value="false" />
+  <parameter name="ENABLE_RESET" value="false" />
+  <parameter name="SIGNAL_DIRECTIONS" value="input" />
+  <parameter name="SIGNAL_ROLES" value="export" />
+  <parameter name="SIGNAL_WIDTHS" value="7" />
+ </module>
+ <module
+   name="cpu_inst_pio_key_0_external_connection_bfm"
+   kind="altera_conduit_bfm"
+   version="18.0"
+   enabled="1">
+  <parameter name="CLOCKED_SIGNAL" value="false" />
+  <parameter name="ENABLE_RESET" value="false" />
+  <parameter name="SIGNAL_DIRECTIONS" value="output" />
+  <parameter name="SIGNAL_ROLES" value="export" />
+  <parameter name="SIGNAL_WIDTHS" value="1" />
+ </module>
+ <module
+   name="cpu_inst_pio_key_1_external_connection_bfm"
+   kind="altera_conduit_bfm"
+   version="18.0"
+   enabled="1">
+  <parameter name="CLOCKED_SIGNAL" value="false" />
+  <parameter name="ENABLE_RESET" value="false" />
+  <parameter name="SIGNAL_DIRECTIONS" value="output" />
+  <parameter name="SIGNAL_ROLES" value="export" />
+  <parameter name="SIGNAL_WIDTHS" value="1" />
+ </module>
+ <module
+   name="cpu_inst_pio_key_2_external_connection_bfm"
+   kind="altera_conduit_bfm"
+   version="18.0"
+   enabled="1">
+  <parameter name="CLOCKED_SIGNAL" value="false" />
+  <parameter name="ENABLE_RESET" value="false" />
+  <parameter name="SIGNAL_DIRECTIONS" value="output" />
+  <parameter name="SIGNAL_ROLES" value="export" />
+  <parameter name="SIGNAL_WIDTHS" value="1" />
+ </module>
+ <module
+   name="cpu_inst_pio_key_3_external_connection_bfm"
+   kind="altera_conduit_bfm"
+   version="18.0"
+   enabled="1">
+  <parameter name="CLOCKED_SIGNAL" value="false" />
+  <parameter name="ENABLE_RESET" value="false" />
+  <parameter name="SIGNAL_DIRECTIONS" value="output" />
+  <parameter name="SIGNAL_ROLES" value="export" />
+  <parameter name="SIGNAL_WIDTHS" value="1" />
+ </module>
+ <module
+   name="cpu_inst_pio_switches_external_connection_bfm"
+   kind="altera_conduit_bfm"
+   version="18.0"
+   enabled="1">
+  <parameter name="CLOCKED_SIGNAL" value="false" />
+  <parameter name="ENABLE_RESET" value="false" />
+  <parameter name="SIGNAL_DIRECTIONS" value="output" />
   <parameter name="SIGNAL_ROLES" value="export" />
   <parameter name="SIGNAL_WIDTHS" value="2" />
  </module>
@@ -112,8 +264,96 @@
  <connection
    kind="conduit"
    version="18.0"
-   start="cpu_inst_leds_bfm.conduit"
-   end="cpu_inst.leds">
+   start="cpu_inst_leds_minutes_ls_external_connection_bfm.conduit"
+   end="cpu_inst.leds_minutes_ls_external_connection">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="conduit"
+   version="18.0"
+   start="cpu_inst_leds_minutes_ms_external_connection_bfm.conduit"
+   end="cpu_inst.leds_minutes_ms_external_connection">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="conduit"
+   version="18.0"
+   start="cpu_inst_leds_seconds_ls_external_connection_bfm.conduit"
+   end="cpu_inst.leds_seconds_ls_external_connection">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="conduit"
+   version="18.0"
+   start="cpu_inst_leds_seconds_ms_external_connection_bfm.conduit"
+   end="cpu_inst.leds_seconds_ms_external_connection">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="conduit"
+   version="18.0"
+   start="cpu_inst_pio_key_0_external_connection_bfm.conduit"
+   end="cpu_inst.pio_key_0_external_connection">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="conduit"
+   version="18.0"
+   start="cpu_inst_pio_key_1_external_connection_bfm.conduit"
+   end="cpu_inst.pio_key_1_external_connection">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="conduit"
+   version="18.0"
+   start="cpu_inst_pio_key_2_external_connection_bfm.conduit"
+   end="cpu_inst.pio_key_2_external_connection">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="conduit"
+   version="18.0"
+   start="cpu_inst_pio_key_3_external_connection_bfm.conduit"
+   end="cpu_inst.pio_key_3_external_connection">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="conduit"
+   version="18.0"
+   start="cpu_inst_pio_switches_external_connection_bfm.conduit"
+   end="cpu_inst.pio_switches_external_connection">
   <parameter name="endPort" value="" />
   <parameter name="endPortLSB" value="0" />
   <parameter name="startPort" value="" />

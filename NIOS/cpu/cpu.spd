@@ -186,13 +186,13 @@
    type="VERILOG"
    library="pio_switches" />
  <file
-   path="simulation/submodules/cpu_pio_key_3.v"
-   type="VERILOG"
-   library="pio_key_3" />
- <file
    path="simulation/submodules/cpu_pio_key_0.v"
    type="VERILOG"
    library="pio_key_0" />
+ <file
+   path="simulation/submodules/cpu_pio_buzzer.v"
+   type="VERILOG"
+   library="pio_buzzer" />
  <file
    path="simulation/submodules/cpu_memoria.hex"
    type="HEX"
@@ -202,13 +202,9 @@
    type="VERILOG"
    library="memoria" />
  <file
-   path="simulation/submodules/cpu_leds_seconds_ls.v"
+   path="simulation/submodules/cpu_leds_hours_ls.v"
    type="VERILOG"
-   library="leds_seconds_ls" />
- <file
-   path="simulation/submodules/cpu_leds_minutes_ls.v"
-   type="VERILOG"
-   library="leds_minutes_ls" />
+   library="leds_hours_ls" />
  <file
    path="simulation/submodules/cpu_jtag_uart_0.v"
    type="VERILOG"

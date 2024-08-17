@@ -6,14 +6,30 @@
 module cpu_tb (
 	);
 
-	wire        cpu_inst_clk_bfm_clk_clk;       // cpu_inst_clk_bfm:clk -> [cpu_inst:clk_clk, cpu_inst_reset_bfm:clk]
-	wire  [1:0] cpu_inst_leds_export;           // cpu_inst:leds_export -> cpu_inst_leds_bfm:sig_export
-	wire        cpu_inst_reset_bfm_reset_reset; // cpu_inst_reset_bfm:reset -> cpu_inst:reset_reset_n
+	wire        cpu_inst_clk_bfm_clk_clk;                                     // cpu_inst_clk_bfm:clk -> [cpu_inst:clk_clk, cpu_inst_reset_bfm:clk]
+	wire  [7:0] cpu_inst_leds_minutes_ls_external_connection_export;          // cpu_inst:leds_minutes_ls_external_connection_export -> cpu_inst_leds_minutes_ls_external_connection_bfm:sig_export
+	wire  [7:0] cpu_inst_leds_minutes_ms_external_connection_export;          // cpu_inst:leds_minutes_ms_external_connection_export -> cpu_inst_leds_minutes_ms_external_connection_bfm:sig_export
+	wire  [6:0] cpu_inst_leds_seconds_ls_external_connection_export;          // cpu_inst:leds_seconds_ls_external_connection_export -> cpu_inst_leds_seconds_ls_external_connection_bfm:sig_export
+	wire  [6:0] cpu_inst_leds_seconds_ms_external_connection_export;          // cpu_inst:leds_seconds_ms_external_connection_export -> cpu_inst_leds_seconds_ms_external_connection_bfm:sig_export
+	wire  [0:0] cpu_inst_pio_key_0_external_connection_bfm_conduit_export;    // cpu_inst_pio_key_0_external_connection_bfm:sig_export -> cpu_inst:pio_key_0_external_connection_export
+	wire  [0:0] cpu_inst_pio_key_1_external_connection_bfm_conduit_export;    // cpu_inst_pio_key_1_external_connection_bfm:sig_export -> cpu_inst:pio_key_1_external_connection_export
+	wire  [0:0] cpu_inst_pio_key_2_external_connection_bfm_conduit_export;    // cpu_inst_pio_key_2_external_connection_bfm:sig_export -> cpu_inst:pio_key_2_external_connection_export
+	wire  [0:0] cpu_inst_pio_key_3_external_connection_bfm_conduit_export;    // cpu_inst_pio_key_3_external_connection_bfm:sig_export -> cpu_inst:pio_key_3_external_connection_export
+	wire  [1:0] cpu_inst_pio_switches_external_connection_bfm_conduit_export; // cpu_inst_pio_switches_external_connection_bfm:sig_export -> cpu_inst:pio_switches_external_connection_export
+	wire        cpu_inst_reset_bfm_reset_reset;                               // cpu_inst_reset_bfm:reset -> cpu_inst:reset_reset_n
 
 	cpu cpu_inst (
-		.clk_clk       (cpu_inst_clk_bfm_clk_clk),       //   clk.clk
-		.leds_export   (cpu_inst_leds_export),           //  leds.export
-		.reset_reset_n (cpu_inst_reset_bfm_reset_reset)  // reset.reset_n
+		.clk_clk                                    (cpu_inst_clk_bfm_clk_clk),                                     //                                 clk.clk
+		.leds_minutes_ls_external_connection_export (cpu_inst_leds_minutes_ls_external_connection_export),          // leds_minutes_ls_external_connection.export
+		.leds_minutes_ms_external_connection_export (cpu_inst_leds_minutes_ms_external_connection_export),          // leds_minutes_ms_external_connection.export
+		.leds_seconds_ls_external_connection_export (cpu_inst_leds_seconds_ls_external_connection_export),          // leds_seconds_ls_external_connection.export
+		.leds_seconds_ms_external_connection_export (cpu_inst_leds_seconds_ms_external_connection_export),          // leds_seconds_ms_external_connection.export
+		.pio_key_0_external_connection_export       (cpu_inst_pio_key_0_external_connection_bfm_conduit_export),    //       pio_key_0_external_connection.export
+		.pio_key_1_external_connection_export       (cpu_inst_pio_key_1_external_connection_bfm_conduit_export),    //       pio_key_1_external_connection.export
+		.pio_key_2_external_connection_export       (cpu_inst_pio_key_2_external_connection_bfm_conduit_export),    //       pio_key_2_external_connection.export
+		.pio_key_3_external_connection_export       (cpu_inst_pio_key_3_external_connection_bfm_conduit_export),    //       pio_key_3_external_connection.export
+		.pio_switches_external_connection_export    (cpu_inst_pio_switches_external_connection_bfm_conduit_export), //    pio_switches_external_connection.export
+		.reset_reset_n                              (cpu_inst_reset_bfm_reset_reset)                                //                               reset.reset_n
 	);
 
 	altera_avalon_clock_source #(
@@ -23,8 +39,40 @@ module cpu_tb (
 		.clk (cpu_inst_clk_bfm_clk_clk)  // clk.clk
 	);
 
-	altera_conduit_bfm cpu_inst_leds_bfm (
-		.sig_export (cpu_inst_leds_export)  // conduit.export
+	altera_conduit_bfm cpu_inst_leds_minutes_ls_external_connection_bfm (
+		.sig_export (cpu_inst_leds_minutes_ls_external_connection_export)  // conduit.export
+	);
+
+	altera_conduit_bfm cpu_inst_leds_minutes_ms_external_connection_bfm (
+		.sig_export (cpu_inst_leds_minutes_ms_external_connection_export)  // conduit.export
+	);
+
+	altera_conduit_bfm_0002 cpu_inst_leds_seconds_ls_external_connection_bfm (
+		.sig_export (cpu_inst_leds_seconds_ls_external_connection_export)  // conduit.export
+	);
+
+	altera_conduit_bfm_0002 cpu_inst_leds_seconds_ms_external_connection_bfm (
+		.sig_export (cpu_inst_leds_seconds_ms_external_connection_export)  // conduit.export
+	);
+
+	altera_conduit_bfm_0003 cpu_inst_pio_key_0_external_connection_bfm (
+		.sig_export (cpu_inst_pio_key_0_external_connection_bfm_conduit_export)  // conduit.export
+	);
+
+	altera_conduit_bfm_0003 cpu_inst_pio_key_1_external_connection_bfm (
+		.sig_export (cpu_inst_pio_key_1_external_connection_bfm_conduit_export)  // conduit.export
+	);
+
+	altera_conduit_bfm_0003 cpu_inst_pio_key_2_external_connection_bfm (
+		.sig_export (cpu_inst_pio_key_2_external_connection_bfm_conduit_export)  // conduit.export
+	);
+
+	altera_conduit_bfm_0003 cpu_inst_pio_key_3_external_connection_bfm (
+		.sig_export (cpu_inst_pio_key_3_external_connection_bfm_conduit_export)  // conduit.export
+	);
+
+	altera_conduit_bfm_0004 cpu_inst_pio_switches_external_connection_bfm (
+		.sig_export (cpu_inst_pio_switches_external_connection_bfm_conduit_export)  // conduit.export
 	);
 
 	altera_avalon_reset_source #(
