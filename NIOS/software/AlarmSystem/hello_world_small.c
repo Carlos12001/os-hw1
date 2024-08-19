@@ -114,10 +114,10 @@ void timer_isr(void *context, alt_u32 id) {
       update_leds_and_buzzer(
           &current_minutes,
           &current_hours);  // Actualizar el valor de los LEDs
-                            // active_alarm = ammount_pressed_key0 > 0 ||
-                            // ammount_pressed_key1 > 0
-      //                    ? active_alarm
-      //                    : 0;
+      if (active_alarm >= 0) {
+        if ((ammount_pressed_key0 != 0) || (ammount_pressed_key1 != 0))
+          active_alarm = 0;
+      }
       break;
     case 0b01:
       current_minutes += ammount_pressed_key0;
