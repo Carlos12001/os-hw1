@@ -19,7 +19,7 @@ int ammount_pressed_key0 = 0;
 int ammount_pressed_key1 = 0;
 int last_state_key0 = 1;
 int last_state_key1 = 1;
-
+int active_alarm = 0;
 int switchState = 0b00;
 
 int decoder (int num) {
@@ -121,10 +121,19 @@ void timer_isr(void* context, alt_u32 id) {
 			update_leds_and_buzzer(&current_minutes, &current_hours);  // Actualizar el valor de los LEDs
 			break;
 		case 0b01:
+			current_minutes += ammount_pressed_key0;
+			current_minutes =  current_minutes >=60 ? 0 : current_minutes;
+			current_hours += ammount_pressed_key1;
+			current_hours =  current_hours >= 24 ? 0 : current_hours;
+			update_leds_and_buzzer(&current_minutes, &current_hours);  // Actualizar el valor de los LEDs
 			break;
 
 		case 0b10:
-			// Agregar aquí para configurar la hora de la alarma
+			alarm_minutes += ammount_pressed_key0;
+			alarm_minutes =  alarm_minutes >=60 ? 0 : alarm_minutes;
+			alarm_hours += ammount_pressed_key1;
+			alarm_hours =  alarm_hours >= 24 ? 0 : alarm_hours;
+			update_leds_and_buzzer(&alarm_minutes, &alarm_hours);  // Actualizar el valor de los LEDs
 			break;
 
 		case 0b11:
