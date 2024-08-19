@@ -15,9 +15,10 @@ int current_hours = 0, current_minutes = 0;
 int alarm_hours = 0, alarm_minutes = 33;  // Default alarm time
 volatile unsigned short *key0 = (unsigned short *) PIO_KEY_0_BASE;
 volatile unsigned short *key1 = (unsigned short *) PIO_KEY_1_BASE;
-int was_pressed_key0 = 0;
-int was_pressed_key1 = 0;
-int active_alarm = 0;
+int ammount_pressed_key0 = 0;
+int ammount_pressed_key1 = 0;
+int last_state_key0 = 1;
+int last_state_key1 = 1;
 
 int switchState = 0b00;
 
@@ -55,7 +56,8 @@ int decoder (int num) {
 
 // Update the current time every second
 void update_time(int* minutes, int* hours) {
-  if (current_seconds) {
+  if (current_seconds>=0) {
+	 current_seconds = 0;
     (*minutes)++;
     if (*minutes >= 60) {
       *minutes = 0;
@@ -119,8 +121,6 @@ void timer_isr(void* context, alt_u32 id) {
 			update_leds_and_buzzer(&current_minutes, &current_hours);  // Actualizar el valor de los LEDs
 			break;
 		case 0b01:
-			// Agregar aquí para configurar la hora del reloj
-			// set_clock(&current_hours, &current_minutes);
 			break;
 
 		case 0b10:
@@ -138,19 +138,19 @@ void timer_isr(void* context, alt_u32 id) {
 			break;
 	}
 	char str[12];
-	if (was_pressed_key0!=0){
+	if (ammount_pressed_key0 !=0){
 	    alt_putstr("key0 =  \n");
-	    itoa(was_pressed_key0, str, 10);
+	    itoa(ammount_pressed_key0, str, 10);
 	    alt_putstr(str);
 	    alt_putstr("\n");
-	    was_pressed_key0=0;
+	    ammount_pressed_key0=0;
 	}
-    if (was_pressed_key1!=0){
+    if (ammount_pressed_key1!=0){
 	    alt_putstr("key1 = \n");
-	    itoa(was_pressed_key1, str, 10);
+	    itoa(ammount_pressed_key1, str, 10);
 	    alt_putstr(str);
 	    alt_putstr("\n");
-	    was_pressed_key1=0;
+	    ammount_pressed_key1=0;
 	}
 
 
@@ -180,7 +180,6 @@ void init_timer() {
 
 
 
-
 int main() {
   IOWR_ALTERA_AVALON_PIO_DATA(LEDS_MINUTES_LS_BASE, decoder(0));
   IOWR_ALTERA_AVALON_PIO_DATA(LEDS_MINUTES_MS_BASE, decoder(0));
@@ -188,17 +187,30 @@ int main() {
   IOWR_ALTERA_AVALON_PIO_DATA(LEDS_HOURS_MS_BASE, decoder(0));
 
   init_timer();              // Initialize the timer
+  int state_key0, state_key1;
 
-  // Small pause to not saturate the terminal
-  while (1){
-	  if ((*key0)==0){
-		  was_pressed_key0 += 1;
-		  alt_putstr("WHILE button key0 \n");
-	  }
-	  if ((*key1)==0){
-		  was_pressed_key1 += 1;
-		  alt_putstr("WHILE button key1 \n");
-	  }
-  };
-  return 0;
+      while (1){
+          // Read current state of each button
+          state_key0 = IORD_ALTERA_AVALON_PIO_DATA(key0);
+          state_key1 = IORD_ALTERA_AVALON_PIO_DATA(key1);
+
+          // Check for button 0 release
+          if (last_state_key0 == 0 && state_key0 == 1) {
+              // Button 0 was released
+        	  ammount_pressed_key0 += 1;
+          }
+
+          // Check for button 1 release
+          if (last_state_key1 == 0 && state_key1 == 1) {
+              // Button 1 was released
+        	  ammount_pressed_key1 += 1;
+          }
+
+          // Update last states
+          last_state_key0 = state_key0;
+          last_state_key1 = state_key1;
+      }
+
+      return 0;
 }
+
