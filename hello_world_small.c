@@ -12,7 +12,7 @@
 // Global variables
 volatile int current_seconds = 0;  // Timer interrupt flag
 int current_hours = 0, current_minutes = 0;
-int alarm_hours = 0, alarm_minutes = 33;  // Default alarm time
+int alarm_hours = 2, alarm_minutes = 7;  // Default alarm time
 volatile unsigned short *key0 = (unsigned short *)PIO_KEY_0_BASE;
 volatile unsigned short *key1 = (unsigned short *)PIO_KEY_1_BASE;
 int ammount_pressed_key0 = 0;
@@ -54,7 +54,7 @@ int decoder(int num) {
 
 // Update the current time every second
 void update_time(int *minutes, int *hours) {
-  if (current_seconds >= 0) {
+  if (current_seconds >= 60) {
     current_seconds = 0;
     (*minutes)++;
     if (*minutes >= 60) {
@@ -90,10 +90,10 @@ void update_leds_and_buzzer(int *minutes, int *hours) {
 }
 
 // Alarm check
-void check_alarm(int current_minutes, int current_hours, int alarm_minutes,
-                 int alarm_hours) {
-  if (current_hours == alarm_hours && current_minutes == alarm_minutes) {
-    active_alarm = 30;
+void check_alarm(int c_minutes, int c_hours, int a_minutes, int a_hours) {
+  if (c_hours == a_hours && c_minutes == a_minutes && current_seconds <= 2) {
+    active_alarm = 31;
+    alt_putstr("TURN ON ALARM\n");
   }
 }
 
@@ -115,9 +115,12 @@ void timer_isr(void *context, alt_u32 id) {
           &current_minutes,
           &current_hours);  // Actualizar el valor de los LEDs
       if (active_alarm >= 0) {
-        if ((ammount_pressed_key0 != 0) || (ammount_pressed_key1 != 0))
+        if ((ammount_pressed_key0 != 0) || (ammount_pressed_key1 != 0)) {
           active_alarm = 0;
+          alt_putstr("TURN OFF\n");
+        }
       }
+      current_seconds += 1;  // Flag that a second has passed
       break;
     case 0b01:
       current_minutes += ammount_pressed_key0;
@@ -126,6 +129,7 @@ void timer_isr(void *context, alt_u32 id) {
       current_hours = current_hours >= 24 ? 0 : current_hours;
       update_leds_and_buzzer(
           &current_minutes, &current_hours);  // Actualizar el valor de los LEDs
+
       break;
 
     case 0b10:
@@ -135,6 +139,7 @@ void timer_isr(void *context, alt_u32 id) {
       alarm_hours = alarm_hours >= 24 ? 0 : alarm_hours;
       update_leds_and_buzzer(&alarm_minutes,
                              &alarm_hours);  // Actualizar el valor de los LEDs
+
       break;
 
     case 0b11:
@@ -143,6 +148,7 @@ void timer_isr(void *context, alt_u32 id) {
                   &current_hours);  // Actualizar la hora actual
       update_leds_and_buzzer(
           &current_minutes, &current_hours);  // Actualizar el valor de los LEDs
+      current_seconds += 1;                   // Flag that a second has passed
       break;
 
     default:
@@ -151,14 +157,14 @@ void timer_isr(void *context, alt_u32 id) {
   }
   char str[12];
   if (ammount_pressed_key0 != 0) {
-    alt_putstr("key0 =  \n");
+    alt_putstr("key0 =  ");
     itoa(ammount_pressed_key0, str, 10);
     alt_putstr(str);
     alt_putstr("\n");
     ammount_pressed_key0 = 0;
   }
   if (ammount_pressed_key1 != 0) {
-    alt_putstr("key1 = \n");
+    alt_putstr("key1 = ");
     itoa(ammount_pressed_key1, str, 10);
     alt_putstr(str);
     alt_putstr("\n");
@@ -166,7 +172,6 @@ void timer_isr(void *context, alt_u32 id) {
   }
 
   IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_BASE, 0);  // Clear the interrupt
-  current_seconds += 1;  // Flag that a second has passed
 
   // Check if it is time to activate the alarm
 }
