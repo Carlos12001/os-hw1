@@ -2,9 +2,9 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Aug 19, 2024 8:45:45 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1724121945188</BspGeneratedUnixTimeStamp>
-        <BspGeneratedLocation>C:\Users\carlos\Repos\os_hw1\software\SystemAlarm_bsp</BspGeneratedLocation>
+        <BspGeneratedTimeStamp>Aug 22, 2024 4:02:35 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1724364155533</BspGeneratedUnixTimeStamp>
+        <BspGeneratedLocation>C:\Users\carlos\Repos\os_hw1\NIOS\software\SystemAlarm_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\cpu.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
@@ -911,56 +911,62 @@
                 <attributes>timer</attributes>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>pio_buzzer</slaveDescriptor>
+                <slaveDescriptor>pio_key_2</slaveDescriptor>
                 <addressRange>0x00003040 - 0x0000304F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>leds_hours_ms</slaveDescriptor>
+                <slaveDescriptor>pio_buzzer</slaveDescriptor>
                 <addressRange>0x00003050 - 0x0000305F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>pio_key_1</slaveDescriptor>
+                <slaveDescriptor>leds_hours_ms</slaveDescriptor>
                 <addressRange>0x00003060 - 0x0000306F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>pio_key_0</slaveDescriptor>
+                <slaveDescriptor>pio_key_1</slaveDescriptor>
                 <addressRange>0x00003070 - 0x0000307F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>pio_switches</slaveDescriptor>
+                <slaveDescriptor>pio_key_0</slaveDescriptor>
                 <addressRange>0x00003080 - 0x0000308F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>leds_hours_ls</slaveDescriptor>
+                <slaveDescriptor>pio_switches</slaveDescriptor>
                 <addressRange>0x00003090 - 0x0000309F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>leds_minutes_ms</slaveDescriptor>
+                <slaveDescriptor>leds_hours_ls</slaveDescriptor>
                 <addressRange>0x000030A0 - 0x000030AF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>leds_minutes_ls</slaveDescriptor>
+                <slaveDescriptor>leds_minutes_ms</slaveDescriptor>
                 <addressRange>0x000030B0 - 0x000030BF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
+                <slaveDescriptor>leds_minutes_ls</slaveDescriptor>
+                <addressRange>0x000030C0 - 0x000030CF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>jtag_uart_0</slaveDescriptor>
-                <addressRange>0x000030C8 - 0x000030CF</addressRange>
+                <addressRange>0x000030D8 - 0x000030DF</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>

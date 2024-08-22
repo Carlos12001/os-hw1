@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'cpu'
  * SOPC Builder design path: ../../cpu.sopcinfo
  *
- * Generated: Mon Aug 19 20:45:08 CST 2024
+ * Generated: Thu Aug 22 16:02:23 CST 2024
  */
 
 /*
@@ -156,19 +156,19 @@
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
 #define ALT_STDERR "/dev/jtag_uart_0"
-#define ALT_STDERR_BASE 0x30c8
+#define ALT_STDERR_BASE 0x30d8
 #define ALT_STDERR_DEV jtag_uart_0
 #define ALT_STDERR_IS_JTAG_UART
 #define ALT_STDERR_PRESENT
 #define ALT_STDERR_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDIN "/dev/jtag_uart_0"
-#define ALT_STDIN_BASE 0x30c8
+#define ALT_STDIN_BASE 0x30d8
 #define ALT_STDIN_DEV jtag_uart_0
 #define ALT_STDIN_IS_JTAG_UART
 #define ALT_STDIN_PRESENT
 #define ALT_STDIN_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDOUT "/dev/jtag_uart_0"
-#define ALT_STDOUT_BASE 0x30c8
+#define ALT_STDOUT_BASE 0x30d8
 #define ALT_STDOUT_DEV jtag_uart_0
 #define ALT_STDOUT_IS_JTAG_UART
 #define ALT_STDOUT_PRESENT
@@ -193,7 +193,7 @@
  */
 
 #define ALT_MODULE_CLASS_jtag_uart_0 altera_avalon_jtag_uart
-#define JTAG_UART_0_BASE 0x30c8
+#define JTAG_UART_0_BASE 0x30d8
 #define JTAG_UART_0_IRQ 0
 #define JTAG_UART_0_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define JTAG_UART_0_NAME "/dev/jtag_uart_0"
@@ -211,7 +211,7 @@
  */
 
 #define ALT_MODULE_CLASS_leds_hours_ls altera_avalon_pio
-#define LEDS_HOURS_LS_BASE 0x3090
+#define LEDS_HOURS_LS_BASE 0x30a0
 #define LEDS_HOURS_LS_BIT_CLEARING_EDGE_REGISTER 0
 #define LEDS_HOURS_LS_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define LEDS_HOURS_LS_CAPTURE 0
@@ -238,7 +238,7 @@
  */
 
 #define ALT_MODULE_CLASS_leds_hours_ms altera_avalon_pio
-#define LEDS_HOURS_MS_BASE 0x3050
+#define LEDS_HOURS_MS_BASE 0x3060
 #define LEDS_HOURS_MS_BIT_CLEARING_EDGE_REGISTER 0
 #define LEDS_HOURS_MS_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define LEDS_HOURS_MS_CAPTURE 0
@@ -265,7 +265,7 @@
  */
 
 #define ALT_MODULE_CLASS_leds_minutes_ls altera_avalon_pio
-#define LEDS_MINUTES_LS_BASE 0x30b0
+#define LEDS_MINUTES_LS_BASE 0x30c0
 #define LEDS_MINUTES_LS_BIT_CLEARING_EDGE_REGISTER 0
 #define LEDS_MINUTES_LS_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define LEDS_MINUTES_LS_CAPTURE 0
@@ -292,7 +292,7 @@
  */
 
 #define ALT_MODULE_CLASS_leds_minutes_ms altera_avalon_pio
-#define LEDS_MINUTES_MS_BASE 0x30a0
+#define LEDS_MINUTES_MS_BASE 0x30b0
 #define LEDS_MINUTES_MS_BIT_CLEARING_EDGE_REGISTER 0
 #define LEDS_MINUTES_MS_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define LEDS_MINUTES_MS_CAPTURE 0
@@ -348,7 +348,7 @@
  */
 
 #define ALT_MODULE_CLASS_pio_buzzer altera_avalon_pio
-#define PIO_BUZZER_BASE 0x3040
+#define PIO_BUZZER_BASE 0x3050
 #define PIO_BUZZER_BIT_CLEARING_EDGE_REGISTER 0
 #define PIO_BUZZER_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PIO_BUZZER_CAPTURE 0
@@ -375,7 +375,7 @@
  */
 
 #define ALT_MODULE_CLASS_pio_key_0 altera_avalon_pio
-#define PIO_KEY_0_BASE 0x3070
+#define PIO_KEY_0_BASE 0x3080
 #define PIO_KEY_0_BIT_CLEARING_EDGE_REGISTER 0
 #define PIO_KEY_0_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PIO_KEY_0_CAPTURE 0
@@ -402,7 +402,7 @@
  */
 
 #define ALT_MODULE_CLASS_pio_key_1 altera_avalon_pio
-#define PIO_KEY_1_BASE 0x3060
+#define PIO_KEY_1_BASE 0x3070
 #define PIO_KEY_1_BIT_CLEARING_EDGE_REGISTER 0
 #define PIO_KEY_1_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PIO_KEY_1_CAPTURE 0
@@ -424,12 +424,39 @@
 
 
 /*
+ * pio_key_2 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_pio_key_2 altera_avalon_pio
+#define PIO_KEY_2_BASE 0x3040
+#define PIO_KEY_2_BIT_CLEARING_EDGE_REGISTER 0
+#define PIO_KEY_2_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PIO_KEY_2_CAPTURE 0
+#define PIO_KEY_2_DATA_WIDTH 1
+#define PIO_KEY_2_DO_TEST_BENCH_WIRING 1
+#define PIO_KEY_2_DRIVEN_SIM_VALUE 1
+#define PIO_KEY_2_EDGE_TYPE "NONE"
+#define PIO_KEY_2_FREQ 50000000
+#define PIO_KEY_2_HAS_IN 1
+#define PIO_KEY_2_HAS_OUT 0
+#define PIO_KEY_2_HAS_TRI 0
+#define PIO_KEY_2_IRQ -1
+#define PIO_KEY_2_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define PIO_KEY_2_IRQ_TYPE "NONE"
+#define PIO_KEY_2_NAME "/dev/pio_key_2"
+#define PIO_KEY_2_RESET_VALUE 0
+#define PIO_KEY_2_SPAN 16
+#define PIO_KEY_2_TYPE "altera_avalon_pio"
+
+
+/*
  * pio_switches configuration
  *
  */
 
 #define ALT_MODULE_CLASS_pio_switches altera_avalon_pio
-#define PIO_SWITCHES_BASE 0x3080
+#define PIO_SWITCHES_BASE 0x3090
 #define PIO_SWITCHES_BIT_CLEARING_EDGE_REGISTER 0
 #define PIO_SWITCHES_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PIO_SWITCHES_CAPTURE 0

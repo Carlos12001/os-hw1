@@ -60,7 +60,7 @@
    {
       datum baseAddress
       {
-         value = "12488";
+         value = "12504";
          type = "String";
       }
    }
@@ -81,7 +81,7 @@
    {
       datum baseAddress
       {
-         value = "12432";
+         value = "12448";
          type = "String";
       }
    }
@@ -102,7 +102,7 @@
    {
       datum baseAddress
       {
-         value = "12368";
+         value = "12384";
          type = "String";
       }
    }
@@ -131,7 +131,7 @@
    {
       datum baseAddress
       {
-         value = "12464";
+         value = "12480";
          type = "String";
       }
    }
@@ -152,7 +152,7 @@
    {
       datum baseAddress
       {
-         value = "12448";
+         value = "12464";
          type = "String";
       }
    }
@@ -194,7 +194,7 @@
    {
       datum baseAddress
       {
-         value = "12352";
+         value = "12368";
          type = "String";
       }
    }
@@ -215,7 +215,7 @@
    {
       datum baseAddress
       {
-         value = "12400";
+         value = "12416";
          type = "String";
       }
    }
@@ -236,7 +236,23 @@
    {
       datum baseAddress
       {
-         value = "12384";
+         value = "12400";
+         type = "String";
+      }
+   }
+   element pio_key_2
+   {
+      datum _sortIndex
+      {
+         value = "13";
+         type = "int";
+      }
+   }
+   element pio_key_2.s1
+   {
+      datum baseAddress
+      {
+         value = "12352";
          type = "String";
       }
    }
@@ -257,7 +273,7 @@
    {
       datum baseAddress
       {
-         value = "12416";
+         value = "12432";
          type = "String";
       }
    }
@@ -340,6 +356,11 @@
    type="conduit"
    dir="end" />
  <interface
+   name="pio_key_2_external_connection"
+   internal="pio_key_2.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
    name="pio_switches_external_connection"
    internal="pio_switches.external_connection"
    type="conduit"
@@ -371,7 +392,7 @@
   <parameter name="dataAddrWidth" value="14" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='memoria.s1' start='0x1000' end='0x2000' type='altera_avalon_onchip_memory2.s1' /><slave name='cpu.debug_mem_slave' start='0x2800' end='0x3000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='timer.s1' start='0x3020' end='0x3040' type='altera_avalon_timer.s1' /><slave name='pio_buzzer.s1' start='0x3040' end='0x3050' type='altera_avalon_pio.s1' /><slave name='leds_hours_ms.s1' start='0x3050' end='0x3060' type='altera_avalon_pio.s1' /><slave name='pio_key_1.s1' start='0x3060' end='0x3070' type='altera_avalon_pio.s1' /><slave name='pio_key_0.s1' start='0x3070' end='0x3080' type='altera_avalon_pio.s1' /><slave name='pio_switches.s1' start='0x3080' end='0x3090' type='altera_avalon_pio.s1' /><slave name='leds_hours_ls.s1' start='0x3090' end='0x30A0' type='altera_avalon_pio.s1' /><slave name='leds_minutes_ms.s1' start='0x30A0' end='0x30B0' type='altera_avalon_pio.s1' /><slave name='leds_minutes_ls.s1' start='0x30B0' end='0x30C0' type='altera_avalon_pio.s1' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x30C8' end='0x30D0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='memoria.s1' start='0x1000' end='0x2000' type='altera_avalon_onchip_memory2.s1' /><slave name='cpu.debug_mem_slave' start='0x2800' end='0x3000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='timer.s1' start='0x3020' end='0x3040' type='altera_avalon_timer.s1' /><slave name='pio_key_2.s1' start='0x3040' end='0x3050' type='altera_avalon_pio.s1' /><slave name='pio_buzzer.s1' start='0x3050' end='0x3060' type='altera_avalon_pio.s1' /><slave name='leds_hours_ms.s1' start='0x3060' end='0x3070' type='altera_avalon_pio.s1' /><slave name='pio_key_1.s1' start='0x3070' end='0x3080' type='altera_avalon_pio.s1' /><slave name='pio_key_0.s1' start='0x3080' end='0x3090' type='altera_avalon_pio.s1' /><slave name='pio_switches.s1' start='0x3090' end='0x30A0' type='altera_avalon_pio.s1' /><slave name='leds_hours_ls.s1' start='0x30A0' end='0x30B0' type='altera_avalon_pio.s1' /><slave name='leds_minutes_ms.s1' start='0x30B0' end='0x30C0' type='altera_avalon_pio.s1' /><slave name='leds_minutes_ls.s1' start='0x30C0' end='0x30D0' type='altera_avalon_pio.s1' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x30D8' end='0x30E0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -410,7 +431,7 @@
   <parameter name="icache_tagramBlockType" value="Automatic" />
   <parameter name="impl" value="Tiny" />
   <parameter name="instAddrWidth" value="14" />
-  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='memoria.s1' start='0x1000' end='0x2000' type='altera_avalon_onchip_memory2.s1' /><slave name='cpu.debug_mem_slave' start='0x2800' end='0x3000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='timer.s1' start='0x3020' end='0x3040' type='altera_avalon_timer.s1' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x30C8' end='0x30D0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
+  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='memoria.s1' start='0x1000' end='0x2000' type='altera_avalon_onchip_memory2.s1' /><slave name='cpu.debug_mem_slave' start='0x2800' end='0x3000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='timer.s1' start='0x3020' end='0x3040' type='altera_avalon_timer.s1' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x30D8' end='0x30E0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
   <parameter name="instructionMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="instructionMasterHighPerformanceMapParam" value="" />
   <parameter name="instruction_master_high_performance_paddr_base" value="0" />
@@ -694,6 +715,20 @@
   <parameter name="simDrivenValue" value="1" />
   <parameter name="width" value="1" />
  </module>
+ <module name="pio_key_2" kind="altera_avalon_pio" version="18.0" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="true" />
+  <parameter name="simDrivenValue" value="1" />
+  <parameter name="width" value="1" />
+ </module>
  <module
    name="pio_switches"
    kind="altera_avalon_pio"
@@ -730,7 +765,7 @@
    start="cpu.data_master"
    end="jtag_uart_0.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x30c8" />
+  <parameter name="baseAddress" value="0x30d8" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -758,7 +793,7 @@
    start="cpu.data_master"
    end="leds_minutes_ls.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x30b0" />
+  <parameter name="baseAddress" value="0x30c0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -767,7 +802,7 @@
    start="cpu.data_master"
    end="leds_minutes_ms.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x30a0" />
+  <parameter name="baseAddress" value="0x30b0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -776,7 +811,7 @@
    start="cpu.data_master"
    end="leds_hours_ls.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x3090" />
+  <parameter name="baseAddress" value="0x30a0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -785,7 +820,7 @@
    start="cpu.data_master"
    end="pio_switches.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x3080" />
+  <parameter name="baseAddress" value="0x3090" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -794,7 +829,7 @@
    start="cpu.data_master"
    end="pio_key_0.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x3070" />
+  <parameter name="baseAddress" value="0x3080" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -803,7 +838,7 @@
    start="cpu.data_master"
    end="pio_key_1.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x3060" />
+  <parameter name="baseAddress" value="0x3070" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -812,7 +847,7 @@
    start="cpu.data_master"
    end="leds_hours_ms.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x3050" />
+  <parameter name="baseAddress" value="0x3060" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -820,6 +855,15 @@
    version="18.0"
    start="cpu.data_master"
    end="pio_buzzer.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x3050" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.0"
+   start="cpu.data_master"
+   end="pio_key_2.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x3040" />
   <parameter name="defaultConnection" value="false" />
@@ -830,7 +874,7 @@
    start="cpu.instruction_master"
    end="jtag_uart_0.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x30c8" />
+  <parameter name="baseAddress" value="0x30d8" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -879,6 +923,7 @@
  <connection kind="clock" version="18.0" start="clk_0.clk" end="pio_key_0.clk" />
  <connection kind="clock" version="18.0" start="clk_0.clk" end="pio_key_1.clk" />
  <connection kind="clock" version="18.0" start="clk_0.clk" end="pio_buzzer.clk" />
+ <connection kind="clock" version="18.0" start="clk_0.clk" end="pio_key_2.clk" />
  <connection kind="clock" version="18.0" start="clk_0.clk" end="memoria.clk1" />
  <connection kind="interrupt" version="18.0" start="cpu.irq" end="jtag_uart_0.irq">
   <parameter name="irqNumber" value="0" />
@@ -933,6 +978,11 @@
    version="18.0"
    start="clk_0.clk_reset"
    end="pio_buzzer.reset" />
+ <connection
+   kind="reset"
+   version="18.0"
+   start="clk_0.clk_reset"
+   end="pio_key_2.reset" />
  <connection
    kind="reset"
    version="18.0"

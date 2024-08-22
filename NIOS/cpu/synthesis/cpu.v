@@ -12,6 +12,7 @@ module cpu (
 		output wire       pio_buzzer_external_connection_export,      //      pio_buzzer_external_connection.export
 		input  wire       pio_key_0_external_connection_export,       //       pio_key_0_external_connection.export
 		input  wire       pio_key_1_external_connection_export,       //       pio_key_1_external_connection.export
+		input  wire       pio_key_2_external_connection_export,       //       pio_key_2_external_connection.export
 		input  wire [1:0] pio_switches_external_connection_export,    //    pio_switches_external_connection.export
 		input  wire       reset_reset_n                               //                               reset.reset_n
 	);
@@ -86,10 +87,12 @@ module cpu (
 	wire   [1:0] mm_interconnect_0_pio_buzzer_s1_address;                     // mm_interconnect_0:pio_buzzer_s1_address -> pio_buzzer:address
 	wire         mm_interconnect_0_pio_buzzer_s1_write;                       // mm_interconnect_0:pio_buzzer_s1_write -> pio_buzzer:write_n
 	wire  [31:0] mm_interconnect_0_pio_buzzer_s1_writedata;                   // mm_interconnect_0:pio_buzzer_s1_writedata -> pio_buzzer:writedata
+	wire  [31:0] mm_interconnect_0_pio_key_2_s1_readdata;                     // pio_key_2:readdata -> mm_interconnect_0:pio_key_2_s1_readdata
+	wire   [1:0] mm_interconnect_0_pio_key_2_s1_address;                      // mm_interconnect_0:pio_key_2_s1_address -> pio_key_2:address
 	wire         irq_mapper_receiver0_irq;                                    // jtag_uart_0:av_irq -> irq_mapper:receiver0_irq
 	wire         irq_mapper_receiver1_irq;                                    // timer:irq -> irq_mapper:receiver1_irq
 	wire  [31:0] cpu_irq_irq;                                                 // irq_mapper:sender_irq -> cpu:irq
-	wire         rst_controller_reset_out_reset;                              // rst_controller:reset_out -> [cpu:reset_n, irq_mapper:reset, jtag_uart_0:rst_n, leds_hours_ls:reset_n, leds_hours_ms:reset_n, leds_minutes_ls:reset_n, leds_minutes_ms:reset_n, memoria:reset, mm_interconnect_0:cpu_reset_reset_bridge_in_reset_reset, pio_buzzer:reset_n, pio_key_0:reset_n, pio_key_1:reset_n, pio_switches:reset_n, rst_translator:in_reset, timer:reset_n]
+	wire         rst_controller_reset_out_reset;                              // rst_controller:reset_out -> [cpu:reset_n, irq_mapper:reset, jtag_uart_0:rst_n, leds_hours_ls:reset_n, leds_hours_ms:reset_n, leds_minutes_ls:reset_n, leds_minutes_ms:reset_n, memoria:reset, mm_interconnect_0:cpu_reset_reset_bridge_in_reset_reset, pio_buzzer:reset_n, pio_key_0:reset_n, pio_key_1:reset_n, pio_key_2:reset_n, pio_switches:reset_n, rst_translator:in_reset, timer:reset_n]
 	wire         rst_controller_reset_out_reset_req;                          // rst_controller:reset_req -> [cpu:reset_req, memoria:reset_req, rst_translator:reset_req_in]
 
 	cpu_cpu cpu (
@@ -219,6 +222,14 @@ module cpu (
 		.in_port  (pio_key_1_external_connection_export)     // external_connection.export
 	);
 
+	cpu_pio_key_0 pio_key_2 (
+		.clk      (clk_clk),                                 //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),         //               reset.reset_n
+		.address  (mm_interconnect_0_pio_key_2_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_pio_key_2_s1_readdata), //                    .readdata
+		.in_port  (pio_key_2_external_connection_export)     // external_connection.export
+	);
+
 	cpu_pio_switches pio_switches (
 		.clk      (clk_clk),                                    //                 clk.clk
 		.reset_n  (~rst_controller_reset_out_reset),            //               reset.reset_n
@@ -304,6 +315,8 @@ module cpu (
 		.pio_key_0_s1_readdata                     (mm_interconnect_0_pio_key_0_s1_readdata),                     //                                .readdata
 		.pio_key_1_s1_address                      (mm_interconnect_0_pio_key_1_s1_address),                      //                    pio_key_1_s1.address
 		.pio_key_1_s1_readdata                     (mm_interconnect_0_pio_key_1_s1_readdata),                     //                                .readdata
+		.pio_key_2_s1_address                      (mm_interconnect_0_pio_key_2_s1_address),                      //                    pio_key_2_s1.address
+		.pio_key_2_s1_readdata                     (mm_interconnect_0_pio_key_2_s1_readdata),                     //                                .readdata
 		.pio_switches_s1_address                   (mm_interconnect_0_pio_switches_s1_address),                   //                 pio_switches_s1.address
 		.pio_switches_s1_readdata                  (mm_interconnect_0_pio_switches_s1_readdata),                  //                                .readdata
 		.timer_s1_address                          (mm_interconnect_0_timer_s1_address),                          //                        timer_s1.address

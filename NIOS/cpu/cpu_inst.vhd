@@ -9,7 +9,8 @@
 			pio_key_0_external_connection_export       : in  std_logic                    := 'X';             -- export
 			pio_key_1_external_connection_export       : in  std_logic                    := 'X';             -- export
 			pio_switches_external_connection_export    : in  std_logic_vector(1 downto 0) := (others => 'X'); -- export
-			reset_reset_n                              : in  std_logic                    := 'X'              -- reset_n
+			reset_reset_n                              : in  std_logic                    := 'X';             -- reset_n
+			pio_key_2_external_connection_export       : in  std_logic                    := 'X'              -- export
 		);
 	end component cpu;
 
@@ -24,6 +25,7 @@
 			pio_key_0_external_connection_export       => CONNECTED_TO_pio_key_0_external_connection_export,       --       pio_key_0_external_connection.export
 			pio_key_1_external_connection_export       => CONNECTED_TO_pio_key_1_external_connection_export,       --       pio_key_1_external_connection.export
 			pio_switches_external_connection_export    => CONNECTED_TO_pio_switches_external_connection_export,    --    pio_switches_external_connection.export
-			reset_reset_n                              => CONNECTED_TO_reset_reset_n                               --                               reset.reset_n
+			reset_reset_n                              => CONNECTED_TO_reset_reset_n,                              --                               reset.reset_n
+			pio_key_2_external_connection_export       => CONNECTED_TO_pio_key_2_external_connection_export        --       pio_key_2_external_connection.export
 		);
 

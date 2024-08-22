@@ -8,6 +8,7 @@
 			pio_buzzer_external_connection_export      : out std_logic;                                       -- export
 			pio_key_0_external_connection_export       : in  std_logic                    := 'X';             -- export
 			pio_key_1_external_connection_export       : in  std_logic                    := 'X';             -- export
+			pio_key_2_external_connection_export       : in  std_logic                    := 'X';             -- export
 			pio_switches_external_connection_export    : in  std_logic_vector(1 downto 0) := (others => 'X'); -- export
 			reset_reset_n                              : in  std_logic                    := 'X'              -- reset_n
 		);

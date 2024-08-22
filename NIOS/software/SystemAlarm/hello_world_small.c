@@ -13,12 +13,9 @@
 volatile int current_seconds = 0;  // Timer interrupt flag
 int current_hours = 0, current_minutes = 0;
 int alarm_hours = 2, alarm_minutes = 7;  // Default alarm time
-volatile unsigned short *key0 = (unsigned short *)PIO_KEY_0_BASE;
-volatile unsigned short *key1 = (unsigned short *)PIO_KEY_1_BASE;
 int ammount_pressed_key0 = 0;
 int ammount_pressed_key1 = 0;
-int last_state_key0 = 1;
-int last_state_key1 = 1;
+int ammount_pressed_key2 = 0;
 int active_alarm = 0;
 int switchState = 0b00;
 
@@ -45,6 +42,8 @@ int decoder(int num) {
     binarySegments = 0b0000000;
   } else if (num == 9) {
     binarySegments = 0b0010000;
+  } else if (num == -1) {
+    binarySegments = 0b1111111;
   } else {
     binarySegments = 0b0000001;
   }
@@ -90,8 +89,7 @@ void update_leds_and_buzzer(int *minutes, int *hours) {
 }
 
 // Alarm check
-void check_alarm(int c_minutes, int c_hours, int a_minutes,
-                 int a_hours) {
+void check_alarm(int c_minutes, int c_hours, int a_minutes, int a_hours) {
   if (c_hours == a_hours && c_minutes == a_minutes && current_seconds <= 2) {
     active_alarm = 31;
     alt_putstr("TURN ON ALARM\n");
@@ -104,6 +102,20 @@ void set_clock(int *hours, int *minutes) {
 
 // Timer ISR
 void timer_isr(void *context, alt_u32 id) {
+  char str[12];
+  if (ammount_pressed_key2 != 0) {
+    alt_putstr("key2 = ");
+    itoa(ammount_pressed_key2, str, 10);
+    alt_putstr(str);
+    alt_putstr("\n");
+    current_minutes = 0;
+    current_hours = 0;
+    active_alarm = 0;
+    ammount_pressed_key0 = 0;
+    ammount_pressed_key0 = 0;
+    ammount_pressed_key2 = 0;
+  }
+
   switchState = IORD_ALTERA_AVALON_PIO_DATA(PIO_SWITCHES_BASE);
 
   switch (switchState) {
@@ -116,7 +128,7 @@ void timer_isr(void *context, alt_u32 id) {
           &current_minutes,
           &current_hours);  // Actualizar el valor de los LEDs
       if (active_alarm >= 0) {
-        if ((ammount_pressed_key0 != 0) || (ammount_pressed_key1 != 0)){
+        if ((ammount_pressed_key0 != 0) || (ammount_pressed_key1 != 0)) {
           active_alarm = 0;
           alt_putstr("TURN OFF\n");
         }
@@ -124,6 +136,7 @@ void timer_isr(void *context, alt_u32 id) {
       current_seconds += 1;  // Flag that a second has passed
       break;
     case 0b01:
+      active_alarm = 0;
       current_minutes += ammount_pressed_key0;
       current_minutes = current_minutes >= 60 ? 0 : current_minutes;
       current_hours += ammount_pressed_key1;
@@ -134,6 +147,7 @@ void timer_isr(void *context, alt_u32 id) {
       break;
 
     case 0b10:
+      active_alarm = 0;
       alarm_minutes += ammount_pressed_key0;
       alarm_minutes = alarm_minutes >= 60 ? 0 : alarm_minutes;
       alarm_hours += ammount_pressed_key1;
@@ -141,23 +155,21 @@ void timer_isr(void *context, alt_u32 id) {
       update_leds_and_buzzer(&alarm_minutes,
                              &alarm_hours);  // Actualizar el valor de los LEDs
 
-
       break;
 
     case 0b11:
-      // Alarma Apagada
-      update_time(&current_minutes,
-                  &current_hours);  // Actualizar la hora actual
-      update_leds_and_buzzer(
-          &current_minutes, &current_hours);  // Actualizar el valor de los LEDs
-      current_seconds += 1;  // Flag that a second has passed
+      active_alarm = 0;
+      // Alarma Y RELOJ APAGADO
+      int temp = -1;
+      update_leds_and_buzzer(&temp,
+                             &temp);  // Actualizar el valor de los LEDs
       break;
 
     default:
       // Error: no se ha pulsado ninguna tecla
       break;
   }
-  char str[12];
+
   if (ammount_pressed_key0 != 0) {
     alt_putstr("key0 =  ");
     itoa(ammount_pressed_key0, str, 10);
@@ -174,7 +186,6 @@ void timer_isr(void *context, alt_u32 id) {
   }
 
   IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_BASE, 0);  // Clear the interrupt
-
 
   // Check if it is time to activate the alarm
 }
@@ -206,12 +217,16 @@ int main() {
   IOWR_ALTERA_AVALON_PIO_DATA(PIO_BUZZER_BASE, 0);
 
   init_timer();  // Initialize the timer
-  int state_key0, state_key1;
+  int state_key0, state_key1, state_key2;
+  int last_state_key0 = 1;
+  int last_state_key1 = 1;
+  int last_state_key2 = 1;
 
   while (1) {
     // Read current state of each button
-    state_key0 = IORD_ALTERA_AVALON_PIO_DATA(key0);
-    state_key1 = IORD_ALTERA_AVALON_PIO_DATA(key1);
+    state_key0 = IORD_ALTERA_AVALON_PIO_DATA(PIO_KEY_0_BASE);
+    state_key1 = IORD_ALTERA_AVALON_PIO_DATA(PIO_KEY_1_BASE);
+    state_key2 = IORD_ALTERA_AVALON_PIO_DATA(PIO_KEY_2_BASE);
 
     // Check for button 0 release
     if (last_state_key0 == 0 && state_key0 == 1) {
@@ -225,9 +240,16 @@ int main() {
       ammount_pressed_key1 += 1;
     }
 
+    // Check for button 2 release
+    if (last_state_key2 == 0 && state_key2 == 1) {
+      // Button 2 was released
+      ammount_pressed_key2 += 1;
+    }
+
     // Update last states
     last_state_key0 = state_key0;
     last_state_key1 = state_key1;
+    last_state_key2 = state_key2;
   }
 
   return 0;

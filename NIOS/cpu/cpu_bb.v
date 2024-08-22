@@ -9,7 +9,8 @@ module cpu (
 	pio_key_0_external_connection_export,
 	pio_key_1_external_connection_export,
 	pio_switches_external_connection_export,
-	reset_reset_n);	
+	reset_reset_n,
+	pio_key_2_external_connection_export);	
 
 	input		clk_clk;
 	output	[6:0]	leds_hours_ls_external_connection_export;
@@ -21,4 +22,5 @@ module cpu (
 	input		pio_key_1_external_connection_export;
 	input	[1:0]	pio_switches_external_connection_export;
 	input		reset_reset_n;
+	input		pio_key_2_external_connection_export;
 endmodule
