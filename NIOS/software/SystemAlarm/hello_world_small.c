@@ -19,6 +19,13 @@ int ammount_pressed_key2 = 0;
 int active_alarm = 0;
 int switchState = 0b00;
 
+/**
+ * Decodes a given integer into its corresponding binary segment representation.
+ *
+ * @param num The integer to be decoded, ranging from -1 to 9.
+ *
+ * @return The binary segment representation of the input integer.
+ */
 int decoder(int num) {
   int binarySegments = 0b1111111;
 
@@ -51,7 +58,13 @@ int decoder(int num) {
   return binarySegments;
 };
 
-// Update the current time every second
+/**
+ * Decodes a given integer into its corresponding binary segment representation.
+ *
+ * @param num The integer to be decoded, ranging from -1 to 9.
+ *
+ * @return The binary segment representation of the input integer.
+ */
 void update_time(int *minutes, int *hours) {
   if (current_seconds >= 60) {
     current_seconds = 0;
@@ -64,6 +77,13 @@ void update_time(int *minutes, int *hours) {
   }
 }
 
+/**
+ * Decodes a given integer into its corresponding binary segment representation.
+ *
+ * @param num The integer to be decoded, ranging from -1 to 9.
+ *
+ * @return The binary segment representation of the input integer.
+ */
 void update_leds_and_buzzer(int *minutes, int *hours) {
   if (active_alarm % 2 != 0) {
     IOWR_ALTERA_AVALON_PIO_DATA(LEDS_MINUTES_MS_BASE, decoder(11));
@@ -88,7 +108,13 @@ void update_leds_and_buzzer(int *minutes, int *hours) {
   }
 }
 
-// Alarm check
+/**
+ * Decodes a given integer into its corresponding binary segment representation.
+ *
+ * @param num The integer to be decoded, ranging from -1 to 9.
+ *
+ * @return The binary segment representation of the input integer.
+ */
 void check_alarm(int c_minutes, int c_hours, int a_minutes, int a_hours) {
   if (c_hours == a_hours && c_minutes == a_minutes && current_seconds <= 2) {
     active_alarm = 31;
@@ -96,11 +122,24 @@ void check_alarm(int c_minutes, int c_hours, int a_minutes, int a_hours) {
   }
 }
 
+/**
+ * Decodes a given integer into its corresponding binary segment representation.
+ *
+ * @param num The integer to be decoded, ranging from -1 to 9.
+ *
+ * @return The binary segment representation of the input integer.
+ */
 void set_clock(int *hours, int *minutes) {
   //
 }
 
-// Timer ISR
+/**
+ * Decodes a given integer into its corresponding binary segment representation.
+ *
+ * @param num The integer to be decoded, ranging from -1 to 9.
+ *
+ * @return The binary segment representation of the input integer.
+ */
 void timer_isr(void *context, alt_u32 id) {
   char str[12];
   if (ammount_pressed_key2 != 0) {
@@ -190,6 +229,13 @@ void timer_isr(void *context, alt_u32 id) {
   // Check if it is time to activate the alarm
 }
 
+/**
+ * Decodes a given integer into its corresponding binary segment representation.
+ *
+ * @param num The integer to be decoded, ranging from -1 to 9.
+ *
+ * @return The binary segment representation of the input integer.
+ */
 void init_timer() {
   unsigned int period_value =
       TIMER_FREQ;  // Calculate the period value for 1 second
@@ -209,6 +255,13 @@ void init_timer() {
                       NULL, NULL);
 }
 
+/**
+ * Decodes a given integer into its corresponding binary segment representation.
+ *
+ * @param num The integer to be decoded, ranging from -1 to 9.
+ *
+ * @return The binary segment representation of the input integer.
+ */
 int main() {
   IOWR_ALTERA_AVALON_PIO_DATA(LEDS_MINUTES_LS_BASE, decoder(0));
   IOWR_ALTERA_AVALON_PIO_DATA(LEDS_MINUTES_MS_BASE, decoder(0));
